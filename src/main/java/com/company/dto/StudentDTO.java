@@ -12,11 +12,11 @@ public class StudentDTO {
     private String surName;
     private String middleName;
     private String description;
-    private String gender;
+    private StudentGender gender;
     private LocalDateTime createdTime;
-    private LocalDateTime studyStartDate;
-    private LocalDateTime studyEndDate;
-    private LocalDateTime birthdate;
+    private String studyStartDate;
+    private String studyEndDate;
+    private String birthdate;
     private Integer studyFieldId;
 
 

@@ -1,16 +1,18 @@
 package com.company.entity;
 
 import com.company.enums.StudentGender;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @Entity
-@Table(name="Student")
+@Table(name = "Student")
 public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,21 +33,20 @@ public class StudentEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StudentGender gender;
-
-    @Column(nullable = false , name = "study_field_id")
+    @Column(nullable = false, name = "study_field_id")
     private Integer studyFieldId;
-
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false, name = "study_start_date")
-    private LocalDateTime studyStartDate;
-
+    private LocalDate studyStartDate;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false, name = "study_end_date")
-    private LocalDateTime studyEndDate;
+    private LocalDate studyEndDate;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @Column(nullable = false, name = "birth_date")
+    private LocalDate birthDate;
 
-     @Column(nullable = false, name = "birth_date")
-    private LocalDateTime birthDate;
-
-     @Column(nullable = false, name = "created_date")
-    private LocalDateTime createdDate=LocalDateTime.now();
+    @Column(nullable = false, name = "created_date")
+    private LocalDateTime createdDate = LocalDateTime.now();
 
 
 }

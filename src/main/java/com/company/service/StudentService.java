@@ -2,12 +2,12 @@ package com.company.service;
 
 import com.company.dto.StudentDTO;
 import com.company.entity.StudentEntity;
-import com.company.exps.AlreadyExistException;
 import com.company.exps.NotFoundException;
 import com.company.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +15,11 @@ import java.util.Optional;
 
 @Service
 public class StudentService {
+
+
     @Autowired
     private StudentRepository studentRepository;
+
 
     public List<StudentDTO> getList() {
 
@@ -27,14 +30,15 @@ public class StudentService {
             StudentDTO dto = new StudentDTO();
             dto.setId(listEntity.getId());
             dto.setFirstName(listEntity.getFirst_name());
+            dto.setMiddleName(listEntity.getMiddle_name());
             dto.setSurName(listEntity.getSurname());
             dto.setDescription(listEntity.getDescription());
-            dto.setBirthdate(listEntity.getBirthDate());
+            dto.setBirthdate(String.valueOf(listEntity.getBirthDate()));
             dto.setCreatedTime(listEntity.getCreatedDate());
-            dto.setGender(listEntity.getGender().toString());
+            dto.setGender(listEntity.getGender());
             dto.setStudyFieldId(listEntity.getStudyFieldId());
-            dto.setStudyStartDate(listEntity.getStudyStartDate());
-            dto.setStudyEndDate(listEntity.getStudyEndDate());
+            dto.setStudyStartDate(String.valueOf(listEntity.getStudyStartDate()));
+            dto.setStudyEndDate(String.valueOf(listEntity.getStudyEndDate()));
             dtoList.add(dto);
             /*System.out.println(dto.toString());*/
         });
@@ -46,13 +50,19 @@ public class StudentService {
 
 
         StudentEntity student = new StudentEntity();
+        student.setId(studentDto.getId());
         student.setFirst_name(studentDto.getFirstName());
         student.setSurname(studentDto.getSurName());
         student.setMiddle_name(studentDto.getMiddleName());
         student.setDescription(studentDto.getDescription());
-        student.setCreatedDate(studentDto.getCreatedTime());
-        student.setStudyStartDate(studentDto.getStudyStartDate());
-        student.setStudyEndDate(studentDto.getStudyEndDate());
+        student.setGender(studentDto.getGender());
+        student.setStudyStartDate(LocalDate.parse((studentDto.getStudyStartDate())));
+        student.setStudyFieldId(studentDto.getStudyFieldId());
+        student.setBirthDate(LocalDate.parse(studentDto.getBirthdate()));
+
+
+        student.setStudyEndDate(LocalDate.parse(studentDto.getStudyStartDate()).plusYears(2));
+
         studentRepository.save(student);
         studentDto.setId(student.getId());
         return studentDto;
@@ -65,14 +75,14 @@ public class StudentService {
         }
         StudentDTO studentDTO = new StudentDTO();
         studentDTO.setId(byId.get().getId());
-        studentDTO.setBirthdate(byId.get().getBirthDate());
+        studentDTO.setBirthdate(String.valueOf(byId.get().getBirthDate()));
         studentDTO.setFirstName(byId.get().getFirst_name());
         studentDTO.setMiddleName(byId.get().getMiddle_name());
         studentDTO.setSurName(byId.get().getSurname());
         studentDTO.setDescription(byId.get().getDescription());
-        studentDTO.setGender(String.valueOf(byId.get().getGender()));
-        studentDTO.setStudyStartDate(byId.get().getStudyStartDate());
-        studentDTO.setStudyEndDate(byId.get().getStudyEndDate());
+        studentDTO.setGender(byId.get().getGender());
+        studentDTO.setStudyStartDate(String.valueOf(byId.get().getStudyStartDate()));
+        studentDTO.setStudyEndDate(String.valueOf(byId.get().getStudyEndDate()));
         studentDTO.setCreatedTime(byId.get().getCreatedDate());
         studentDTO.setStudyFieldId(byId.get().getStudyFieldId());
         return studentDTO;

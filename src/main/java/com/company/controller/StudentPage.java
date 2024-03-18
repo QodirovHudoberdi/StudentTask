@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("student")
-public class StudentController {
+public class StudentPage {
     @Autowired
     private StudentService studentService;
     @Autowired
@@ -33,9 +33,10 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getStudent(@PathVariable("id") Integer id) {
+    public ResponseEntity<?> getStudent(@PathVariable("id") Integer id,
+                                        @RequestBody String path) {
         StudentDTO dto = studentService.getStudentById(id);
-        listService.getPdf(dto);
+        listService.getPdf(dto, path);
 
         return ResponseEntity.ok().body(dto);
     }

@@ -12,37 +12,39 @@ import com.itextpdf.layout.properties.HorizontalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class ListService {
+    @Autowired
+    private PhotoService photoService;
     private static final String PATH = "src/main/resources/";
 
 
     public void getExcel(List<StudentDTO> dto) {
-
-        File file = new File(PATH + "listOfStudents.xlsx");
-        XSSFWorkbook workbook = new XSSFWorkbook();
-
-        try (FileOutputStream out = new FileOutputStream(file)) {
-
+        String filePath = PATH + "listOfStudents.xlsx";
+        try (FileOutputStream out = new FileOutputStream(filePath)) {
+            XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet("students");
 
-
-            XSSFRow row0 = sheet.createRow(0);
-            row0.createCell(0).setCellValue("ID");
-            row0.createCell(1).setCellValue(" FullName ");
-            row0.createCell(2).setCellValue(" Birthdate ");
-            row0.createCell(3).setCellValue("Created Date");
-            row0.createCell(4).setCellValue("Study Start Date");
-            row0.createCell(5).setCellValue("Study End Date");
-
+            XSSFRow headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("ID");
+            headerRow.createCell(1).setCellValue("First Name");
+            headerRow.createCell(2).setCellValue("Middle Name");
+            headerRow.createCell(3).setCellValue("SurName");
+            headerRow.createCell(4).setCellValue("Birthdate");
+            headerRow.createCell(5).setCellValue("Created Date");
+            headerRow.createCell(6).setCellValue("Study Start Date");
+            headerRow.createCell(7).setCellValue("Study End Date");
 
             for (int i = 0; i < dto.size(); i++) {
                 StudentDTO studentDto = dto.get(i);
@@ -50,33 +52,34 @@ public class ListService {
 
                 XSSFRow row = sheet.createRow(i + 1);
                 row.createCell(0).setCellValue(studentDto.getId());
-                row.createCell(1).setCellValue(studentDto.getFirstName() + " " + studentDto.getSurName());
-                row.createCell(2).setCellValue(String.valueOf(studentDto.getBirthdate().toLocalDate()));
-                row.createCell(3).setCellValue(String.valueOf(studentDto.getCreatedTime()));
-                row.createCell(4).setCellValue(String.valueOf(studentDto.getStudyStartDate().toLocalDate()));
-                row.createCell(5).setCellValue(String.valueOf(studentDto.getStudyEndDate().toLocalDate()));
+                row.createCell(1).setCellValue(studentDto.getFirstName());
+                row.createCell(2).setCellValue(studentDto.getMiddleName());
+                row.createCell(3).setCellValue(studentDto.getSurName());
 
+                LocalDate birthdate = LocalDate.parse(studentDto.getBirthdate());
+                LocalDate createdDate = studentDto.getCreatedTime().toLocalDate();
+                LocalDate studyStartDate = LocalDate.parse(studentDto.getStudyStartDate());
+                LocalDate studyEndDate = LocalDate.parse(studentDto.getStudyEndDate());
 
+                row.createCell(4).setCellValue(String.valueOf(birthdate));
+                row.createCell(5).setCellValue(String.valueOf(createdDate));
+                row.createCell(6).setCellValue(String.valueOf(studyStartDate));
+                row.createCell(7).setCellValue(String.valueOf(studyEndDate));
             }
 
-            for (int i = 0; i < 6; i++) {
+            int columnCount = headerRow.getLastCellNum();
+            for (int i = 0; i < columnCount; i++) {
                 sheet.autoSizeColumn(i);
             }
 
             workbook.write(out);
-            workbook.close();
-
-            Desktop.getDesktop().open(file);
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    public void getPdf(StudentDTO dto) {
+
+    public void getPdf(StudentDTO dto, String path) {
 
 
         File file = new File(PATH + "student.pdf");
@@ -90,38 +93,31 @@ public class ListService {
             Paragraph paragraph = new Paragraph("STUDENT");
             paragraph.setHorizontalAlignment(HorizontalAlignment.RIGHT);
             document.add(paragraph);
-            Paragraph paragraph1 = new Paragraph(dto.getFirstName()+" " +dto.getSurName()+" "+ dto.getMiddleName());
-            paragraph1.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+            Paragraph paragraph1 = new Paragraph(dto.getFirstName() + " " + dto.getSurName() + " " + dto.getMiddleName());
+            paragraph1.setHorizontalAlignment(HorizontalAlignment.LEFT);
             document.add(paragraph1);
-            Paragraph paragraph5 = new Paragraph("Birthday : "+dto.getBirthdate().toString());
-            paragraph5.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+            Paragraph paragraph5 = new Paragraph("Birthday : " + dto.getBirthdate().toString());
+            paragraph5.setHorizontalAlignment(HorizontalAlignment.LEFT);
             document.add(paragraph5);
-            Paragraph paragraph2 = new Paragraph("Description : " +dto.getDescription());
-            paragraph2.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+            Paragraph paragraph2 = new Paragraph("Description : " + dto.getDescription());
+            paragraph2.setHorizontalAlignment(HorizontalAlignment.LEFT);
             document.add(paragraph2);
-            Paragraph paragraph3 = new Paragraph("Study Started Time : "+ dto.getStudyStartDate().toLocalDate());
-            paragraph3.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+            Paragraph paragraph3 = new Paragraph("Study Started Time : " + dto.getStudyStartDate());
+            paragraph3.setHorizontalAlignment(HorizontalAlignment.LEFT);
             document.add(paragraph3);
-            Paragraph paragraph4 = new Paragraph("Study End Time :  "+ dto.getStudyEndDate().toLocalDate());
-            paragraph4.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+            Paragraph paragraph4 = new Paragraph("Study End Time :  " + dto.getStudyEndDate());
+            paragraph4.setHorizontalAlignment(HorizontalAlignment.LEFT);
             document.add(paragraph4);
-
-
-      // add image
-
-            String fileName = PATH + "student.png";
-
+            photoService.imageSaver(path);
+            String fileName = PATH + "fifty.png";
             ImageData imageData = ImageDataFactory.create(fileName);
-            Image image = new Image(imageData);
+            Image image1 = new Image(imageData);
 
-            document.add(image);
-
-            // finally
+            document.add(image1);
             document.close();
 
             System.out.println("Finish");
 
-            Desktop.getDesktop().open(file);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

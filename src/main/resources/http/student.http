@@ -1,12 +1,16 @@
-POST http://localhost:8081/student/create
+POST http://localhost:8082/student/create
 Content-Type: application/json
 
 {
-  "firstName" : "Ali",
-  "surName" : "Valiyev",
-  "middleName" : "soliyevich",
-  "description":"Buhorolik",
-  "gender": "MALE"
+  "id": 4,
+  "firstName" : "Jon",
+  "surName" : "John",
+  "middleName" : "Micky",
+  "description":"scottish",
+  "gender": "MALE",
+  "studyStartDate": "02.02.2021",
+  "studyFieldId": 2,
+  "birthdate": "04.05.2004"
 }
 
 ####
@@ -20,3 +24,4 @@ Content-Type: application/json
 
 GET http://localhost:8082/student/2
 Content-Type: application/json
+Image
