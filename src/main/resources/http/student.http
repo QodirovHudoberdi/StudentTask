@@ -1,0 +1,22 @@
+POST http://localhost:8081/student/create
+Content-Type: application/json
+
+{
+  "firstName" : "Ali",
+  "surName" : "Valiyev",
+  "middleName" : "soliyevich",
+  "description":"Buhorolik",
+  "gender": "MALE"
+}
+
+####
+
+
+GET http://localhost:8082/student
+Content-Type: application/json
+
+####
+
+
+GET http://localhost:8082/student/2
+Content-Type: application/json
