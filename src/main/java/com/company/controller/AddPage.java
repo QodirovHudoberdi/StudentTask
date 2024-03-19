@@ -6,10 +6,9 @@ import com.company.service.StudyFieldService;
 import com.company.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("create")
@@ -33,6 +32,21 @@ public class AddPage {
     @PostMapping("/studyField")
     public ResponseEntity<?> create(@RequestBody FieldStudiesDTO fieldstudiesDTO) {
         FieldStudiesDTO dto = studyFieldService.create(fieldstudiesDTO);
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @GetMapping("universities")
+    public ResponseEntity<?> getList() {
+        List<UniversityDTO> dto = universityService.getList();
+
+
+        return ResponseEntity.ok().body(dto);
+    }
+    @GetMapping("fieldOfStudies")
+    public ResponseEntity<?> getList1() {
+        List<FieldStudiesDTO> dto = studyFieldService.getList1();
+
+
         return ResponseEntity.ok().body(dto);
     }
 }
