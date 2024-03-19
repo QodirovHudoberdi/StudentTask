@@ -2,51 +2,38 @@ package com.company.controller;
 
 import com.company.dto.FieldStudiesDTO;
 import com.company.dto.UniversityDTO;
-import com.company.service.StudyFieldService;
-import com.company.service.UniversityService;
+import com.company.service.StudyFieldServiceImpl;
+import com.company.service.UniversityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("create")
+@RequestMapping("/create")
 
 public class AddPage {
-
     @Autowired
-    private UniversityService universityService;
-
-
+    private UniversityServiceImpl universityInterface;
     @Autowired
-    private StudyFieldService studyFieldService;
-
+    private StudyFieldServiceImpl studyFieldService;
 
     @PostMapping("/university")
     public ResponseEntity<?> create(@RequestBody UniversityDTO universityDTO) {
-        UniversityDTO dto = universityService.create(universityDTO);
-        return ResponseEntity.ok().body(dto);
+        return ResponseEntity.ok(universityInterface.create(universityDTO));
+    }
+
+    @GetMapping("/universities")
+    public ResponseEntity<?> getList() {
+        return ResponseEntity.ok(universityInterface.getList());
     }
 
     @PostMapping("/studyField")
     public ResponseEntity<?> create(@RequestBody FieldStudiesDTO fieldstudiesDTO) {
-        FieldStudiesDTO dto = studyFieldService.create(fieldstudiesDTO);
-        return ResponseEntity.ok().body(dto);
+        return ResponseEntity.ok(studyFieldService.create(fieldstudiesDTO));
     }
 
-    @GetMapping("universities")
-    public ResponseEntity<?> getList() {
-        List<UniversityDTO> dto = universityService.getList();
-
-
-        return ResponseEntity.ok().body(dto);
-    }
-    @GetMapping("fieldOfStudies")
+    @GetMapping("/fieldOfStudies")
     public ResponseEntity<?> getList1() {
-        List<FieldStudiesDTO> dto = studyFieldService.getList1();
-
-
-        return ResponseEntity.ok().body(dto);
+        return ResponseEntity.ok(studyFieldService.getList1());
     }
 }

@@ -1,5 +1,6 @@
 package com.company.service;
 
+import com.company.dto.PhotoDTO;
 import com.company.dto.StudentDTO;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -10,12 +11,11 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.properties.HorizontalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -26,10 +26,11 @@ import java.util.List;
 @Service
 public class ListService {
     @Autowired
-    private PhotoService photoService;
-    private static final String PATH = "src/main/resources/";
+    private PhotoService2 photoService2;
+    private static final String PATH = "src/main/resources/documents/";
+    private static final String PATH2 = "src/main/resources/images/";
 
-
+    // Get Excel Document
     public void getExcel(List<StudentDTO> dto) {
         String filePath = PATH + "listOfStudents.xlsx";
         try (FileOutputStream out = new FileOutputStream(filePath)) {
@@ -41,10 +42,11 @@ public class ListService {
             headerRow.createCell(1).setCellValue("First Name");
             headerRow.createCell(2).setCellValue("Middle Name");
             headerRow.createCell(3).setCellValue("SurName");
-            headerRow.createCell(4).setCellValue("Birthdate");
-            headerRow.createCell(5).setCellValue("Created Date");
-            headerRow.createCell(6).setCellValue("Study Start Date");
-            headerRow.createCell(7).setCellValue("Study End Date");
+            headerRow.createCell(4).setCellValue("Gender");
+            headerRow.createCell(5).setCellValue("Birthdate");
+            headerRow.createCell(6).setCellValue("Created Date");
+            headerRow.createCell(7).setCellValue("Study Start Date");
+            headerRow.createCell(8).setCellValue("Study End Date");
 
             for (int i = 0; i < dto.size(); i++) {
                 StudentDTO studentDto = dto.get(i);
@@ -55,16 +57,17 @@ public class ListService {
                 row.createCell(1).setCellValue(studentDto.getFirstName());
                 row.createCell(2).setCellValue(studentDto.getMiddleName());
                 row.createCell(3).setCellValue(studentDto.getSurName());
+                row.createCell(4).setCellValue(String.valueOf(studentDto.getGender()));
 
                 LocalDate birthdate = LocalDate.parse(studentDto.getBirthdate());
                 LocalDate createdDate = studentDto.getCreatedTime().toLocalDate();
                 LocalDate studyStartDate = LocalDate.parse(studentDto.getStudyStartDate());
                 LocalDate studyEndDate = LocalDate.parse(studentDto.getStudyEndDate());
 
-                row.createCell(4).setCellValue(String.valueOf(birthdate));
-                row.createCell(5).setCellValue(String.valueOf(createdDate));
-                row.createCell(6).setCellValue(String.valueOf(studyStartDate));
-                row.createCell(7).setCellValue(String.valueOf(studyEndDate));
+                row.createCell(5).setCellValue(String.valueOf(birthdate));
+                row.createCell(6).setCellValue(String.valueOf(createdDate));
+                row.createCell(7).setCellValue(String.valueOf(studyStartDate));
+                row.createCell(8).setCellValue(String.valueOf(studyEndDate));
             }
 
             int columnCount = headerRow.getLastCellNum();
@@ -78,11 +81,12 @@ public class ListService {
         }
     }
 
+    // upload PDf to Database
 
-    public void getPdf(StudentDTO dto, String path) {
+    public void getPdf(StudentDTO dto, PhotoDTO photo) {
 
 
-        File file = new File(PATH + "student.pdf");
+        File file = new File(PATH + dto.getSurName() + ".pdf");
         try (PdfWriter pdfWriter = new PdfWriter(file)) {
 
             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
@@ -108,11 +112,11 @@ public class ListService {
             Paragraph paragraph4 = new Paragraph("Study End Time :  " + dto.getStudyEndDate());
             paragraph4.setHorizontalAlignment(HorizontalAlignment.LEFT);
             document.add(paragraph4);
-            photoService.imageSaver(path);
-            String fileName = PATH + "fifty.png";
-            ImageData imageData = ImageDataFactory.create(fileName);
-            Image image1 = new Image(imageData);
 
+            ImageData imageData = ImageDataFactory.create(photoService2.imageSaver(dto, photo));
+            Image image1 = new Image(imageData);
+            image1.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+            image1.setMarginTop(-200);
             document.add(image1);
             document.close();
 

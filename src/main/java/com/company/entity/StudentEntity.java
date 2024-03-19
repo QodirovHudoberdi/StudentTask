@@ -17,19 +17,14 @@ public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     @Column(nullable = false)
     private String first_name;
-
     @Column(nullable = false)
     private String surname;
-
     @Column(nullable = false)
     private String middle_name;
-
     @Column(nullable = false)
     private String description;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StudentGender gender;
@@ -44,9 +39,6 @@ public class StudentEntity {
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false, name = "birth_date")
     private LocalDate birthDate;
-
     @Column(nullable = false, name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
-
-
 }
