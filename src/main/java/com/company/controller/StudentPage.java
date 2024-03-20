@@ -24,7 +24,7 @@ public class StudentPage {
         return ResponseEntity.ok().body(dto);
     }
 
-    @PutMapping("/student/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody StudentDTO dto) {
         studentServiceImpl.updateStudent(id, dto);
         return ResponseEntity.ok().build();

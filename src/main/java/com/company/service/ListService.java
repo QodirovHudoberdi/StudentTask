@@ -26,7 +26,7 @@ import java.util.List;
 @Service
 public class ListService {
     @Autowired
-    private PhotoService2 photoService2;
+    private PhotoService photoService2;
     private static final String PATH = "src/main/resources/documents/";
     private static final String PATH2 = "src/main/resources/images/";
 
@@ -84,50 +84,26 @@ public class ListService {
     // upload PDf to Database
 
     public void getPdf(StudentDTO dto, PhotoDTO photo) {
+        String filePath = PATH + dto.getSurName() + ".pdf";
+        try (PdfWriter pdfWriter = new PdfWriter(filePath);
+             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+             Document document = new Document(pdfDocument)) {
 
+            document.add(new Paragraph(dto.getFirstName() + " " + dto.getSurName() + " " + dto.getMiddleName()).setHorizontalAlignment(HorizontalAlignment.CENTER));
+            document.add(new Paragraph("Birthday: " + dto.getBirthdate()).setHorizontalAlignment(HorizontalAlignment.LEFT));
+            document.add(new Paragraph("Description: " + dto.getDescription()).setHorizontalAlignment(HorizontalAlignment.LEFT));
+            document.add(new Paragraph("Gender : " + dto.getGender()).setHorizontalAlignment(HorizontalAlignment.LEFT));
+            document.add(new Paragraph("Study Started Time: " + dto.getStudyStartDate()).setHorizontalAlignment(HorizontalAlignment.LEFT));
+            document.add(new Paragraph("Study End Time: " + dto.getStudyEndDate()).setHorizontalAlignment(HorizontalAlignment.LEFT));
 
-        File file = new File(PATH + dto.getSurName() + ".pdf");
-        try (PdfWriter pdfWriter = new PdfWriter(file)) {
-
-            PdfDocument pdfDocument = new PdfDocument(pdfWriter);
-            pdfDocument.addNewPage();
-            Document document = new Document(pdfDocument);
-
-
-            Paragraph paragraph = new Paragraph("STUDENT");
-            paragraph.setHorizontalAlignment(HorizontalAlignment.RIGHT);
-            document.add(paragraph);
-            Paragraph paragraph1 = new Paragraph(dto.getFirstName() + " " + dto.getSurName() + " " + dto.getMiddleName());
-            paragraph1.setHorizontalAlignment(HorizontalAlignment.LEFT);
-            document.add(paragraph1);
-            Paragraph paragraph5 = new Paragraph("Birthday : " + dto.getBirthdate().toString());
-            paragraph5.setHorizontalAlignment(HorizontalAlignment.LEFT);
-            document.add(paragraph5);
-            Paragraph paragraph2 = new Paragraph("Description : " + dto.getDescription());
-            paragraph2.setHorizontalAlignment(HorizontalAlignment.LEFT);
-            document.add(paragraph2);
-            Paragraph paragraph3 = new Paragraph("Study Started Time : " + dto.getStudyStartDate());
-            paragraph3.setHorizontalAlignment(HorizontalAlignment.LEFT);
-            document.add(paragraph3);
-            Paragraph paragraph4 = new Paragraph("Study End Time :  " + dto.getStudyEndDate());
-            paragraph4.setHorizontalAlignment(HorizontalAlignment.LEFT);
-            document.add(paragraph4);
-
-            ImageData imageData = ImageDataFactory.create(photoService2.imageSaver(dto, photo));
-            Image image1 = new Image(imageData);
-            image1.setHorizontalAlignment(HorizontalAlignment.RIGHT);
-            image1.setMarginTop(-200);
-            document.add(image1);
-            document.close();
+            String fileName = photoService2.imageSaver(dto, photo);
+            ImageData imageData = ImageDataFactory.create(fileName);
+            Image image = new Image(imageData).setHorizontalAlignment(HorizontalAlignment.RIGHT).setMarginRight(20);
+            document.add(image);
 
             System.out.println("Finish");
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }

@@ -1,21 +1,18 @@
 package com.company.utils;
 
-
-
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Base64;
+import java.io.IOException;
 
 public class ImageUtils {
-        public static byte[] saveImageFromBase64(String base64Image, String fileName) throws IOException {
-            byte[] decoded = Base64.getDecoder().decode(base64Image);
-
-            try (FileOutputStream fos = new FileOutputStream(fileName)) {
-                fos.write(decoded);
-                return decoded;
-            }
+    public static void decoder(String base64Image, String pathFile) {
+        try {
+            byte[] imageByteArray = Base64.getDecoder().decode(base64Image);
+            Files.write(Path.of(pathFile), imageByteArray, StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            System.out.println("Exception occurred while decoding and saving the image: " + e);
         }
-
+    }
 }
