@@ -1,4 +1,4 @@
-package com.company.exps;
+package com.company.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

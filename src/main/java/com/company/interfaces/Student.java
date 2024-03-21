@@ -1,12 +1,12 @@
-package com.company.service;
+package com.company.interfaces;
 
-import com.company.dto.StudentDTO;
+import com.company.models.StudentDTO;
 
 import java.util.List;
 
-public interface StudentServiceImpl {
+public interface Student {
     void updateStudent(Integer id, StudentDTO studentDTO);
-    String delete(Integer id);
+    void delete(Integer id);
     StudentDTO getStudentById(Integer id);
     StudentDTO create(StudentDTO studentDto);
     List<StudentDTO> getList();

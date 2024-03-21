@@ -1,6 +1,7 @@
 package com.company.service;
 
-import com.company.dto.FieldStudiesDTO;
+import com.company.interfaces.StudyField;
+import com.company.models.FieldStudiesDTO;
 import com.company.entity.FieldStudiesEntity;
 import com.company.repository.StudyFieldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
-public class StudyFieldService implements StudyFieldServiceImpl {
+public class StudyFieldService implements StudyField {
     @Autowired
     private StudyFieldRepository studyFieldRepository;
 
-    // Create Field Study
+    /**
+     * Create Field Study
+     *
+     * @param fieldstudiesDTO is value's of new fieldStudios
+     * */
     @Override
     public FieldStudiesDTO create(FieldStudiesDTO fieldstudiesDTO) {
         FieldStudiesEntity entity = new FieldStudiesEntity();
@@ -25,7 +30,9 @@ public class StudyFieldService implements StudyFieldServiceImpl {
         return fieldstudiesDTO;
     }
 
-    // Get Fields of Study Lists
+    /**
+     * Get list of  field of studies
+     * */
     @Override
     public List<FieldStudiesDTO> getList1() {
         Iterable<FieldStudiesEntity> all = studyFieldRepository.findAll();

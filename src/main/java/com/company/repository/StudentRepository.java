@@ -11,6 +11,4 @@ public interface StudentRepository extends CrudRepository<StudentEntity, Integer
     Iterable<StudentEntity> findAll();
 
     Optional<StudentEntity> findById(Integer id);
-
-
 }

@@ -1,9 +1,10 @@
 package com.company.service;
 
-import com.company.dto.StudentDTO;
+import com.company.interfaces.Student;
+import com.company.models.StudentDTO;
 import com.company.entity.StudentEntity;
-import com.company.exps.NotFoundException;
-import com.company.exps.OkExceptions;
+import com.company.response.NotFoundException;
+import com.company.response.OkResponse;
 import com.company.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,11 @@ import java.util.Optional;
 
 
 @Service
-public class StudentService implements StudentServiceImpl {
-
-
+public class StudentService implements Student {
     @Autowired
     private StudentRepository studentRepository;
 
-// Get Students list
+    // Get Students list
     @Override
     public List<StudentDTO> getList() {
         Iterable<StudentEntity> all = studentRepository.findAll();
@@ -41,10 +40,10 @@ public class StudentService implements StudentServiceImpl {
             dto.setStudyStartDate(String.valueOf(listEntity.getStudyStartDate()));
             dto.setStudyEndDate(String.valueOf(listEntity.getStudyEndDate()));
             dtoList.add(dto);
-           // System.out.println(dto.toString());
         });
         return dtoList;
     }
+
     // Create Student
     @Override
     public StudentDTO create(StudentDTO studentDto) {
@@ -63,13 +62,13 @@ public class StudentService implements StudentServiceImpl {
         studentDto.setId(student.getId());
         return studentDto;
     }
+
     // Get one Student
     @Override
     public StudentDTO getStudentById(Integer id) {
         Optional<StudentEntity> byId = studentRepository.findById(id);
-        if (byId.isEmpty()) {
-            throw new NotFoundException("User Not Found ");
-        }
+        if (byId.isEmpty()) throw new NotFoundException("User Not Found ");
+
         StudentDTO studentDTO = new StudentDTO();
         studentDTO.setId(byId.get().getId());
         studentDTO.setBirthdate(String.valueOf(byId.get().getBirthDate()));
@@ -84,47 +83,44 @@ public class StudentService implements StudentServiceImpl {
         studentDTO.setStudyFieldId(byId.get().getStudyFieldId());
         return studentDTO;
     }
+
     // Delete Student
     @Override
-    public String delete(Integer id) {
+    public void delete(Integer id) {
         Optional<StudentEntity> byId = studentRepository.findById(id);
-        if (byId.isEmpty()) {
-            throw new NotFoundException("Student Not Found");
-        }
+        if (byId.isEmpty()) throw new NotFoundException("Student Not Found");
+
         studentRepository.delete(byId.get());
-        return "Student deleted Successfully";
+        throw new OkResponse("Deleted");
+
     }
+
     // Edit Student's data
     @Override
     public void updateStudent(Integer id, StudentDTO studentDTO) {
         Optional<StudentEntity> byId = studentRepository.findById(id);
-        if (byId.isEmpty()) {
-            throw new NotFoundException("That student is not Found");
-        }
+        if (byId.isEmpty()) throw new NotFoundException("That student is not Found");
+
         StudentEntity studentEntity = byId.get();
-        studentEntity.setFirst_name(orElse(studentDTO.getFirstName(), byId.get().getFirst_name()));
-        studentEntity.setSurname(orElse(studentDTO.getSurName(), byId.get().getSurname()));
-        studentEntity.setMiddle_name(orElse(studentDTO.getMiddleName(), byId.get().getMiddle_name()));
-        studentEntity.setDescription(orElse(studentDTO.getDescription(), byId.get().getDescription()));
-        studentEntity.setBirthDate(elseNull(studentDTO.getBirthdate(),byId.get().getBirthDate()));
-        studentEntity.setStudyStartDate(elseNull(studentDTO.getStudyStartDate(),byId.get().getStudyStartDate()));
-        studentEntity.setStudyEndDate(elseNull(studentDTO.getStudyEndDate(),byId.get().getStudyEndDate()));
-        studentEntity.setStudyFieldId(
-                studentDTO.getStudyFieldId()==null ? byId.get().getStudyFieldId():
-                                                        studentEntity.getStudyFieldId());
-        studentEntity.setGender(
-                studentDTO.getGender()==null ? byId.get().getGender():
-                                                        studentEntity.getGender());
+        studentEntity.setFirst_name(orElse(studentDTO.getFirstName(), studentEntity.getFirst_name()));
+        studentEntity.setSurname(orElse(studentDTO.getSurName(), studentEntity.getSurname()));
+        studentEntity.setMiddle_name(orElse(studentDTO.getMiddleName(), studentEntity.getMiddle_name()));
+        studentEntity.setDescription(orElse(studentDTO.getDescription(), studentEntity.getDescription()));
+        studentEntity.setBirthDate(elseNull(studentDTO.getBirthdate(), studentEntity.getBirthDate()));
+        studentEntity.setStudyStartDate(elseNull(studentDTO.getStudyStartDate(), studentEntity.getStudyStartDate()));
+        studentEntity.setStudyEndDate(elseNull(studentDTO.getStudyEndDate(), studentEntity.getStudyEndDate()));
+        studentEntity.setStudyFieldId(studentDTO.getStudyFieldId() == null ? studentEntity.getStudyFieldId() : studentDTO.getStudyFieldId());
+        studentEntity.setGender(studentDTO.getGender() == null ? studentEntity.getGender() : studentDTO.getGender());
         studentRepository.save(studentEntity);
         studentDTO.setId(studentEntity.getId());
-        throw new OkExceptions("Student Updated");
+        throw new OkResponse("Student Updated");
     }
 
-
-    public String orElse(String value ,String other) {
+    public String orElse(String value, String other) {
         return value != null ? value : other;
     }
-    public LocalDate elseNull(String value ,LocalDate other) {
-        return value != null ? LocalDate.parse(value) :other;
+
+    public LocalDate elseNull(String value, LocalDate other) {
+        return value != null ? LocalDate.parse(value) : other;
     }
 }

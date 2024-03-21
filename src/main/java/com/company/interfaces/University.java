@@ -1,12 +1,10 @@
-package com.company.service;
+package com.company.interfaces;
 
-import com.company.dto.UniversityDTO;
+import com.company.models.UniversityDTO;
 
 import java.util.List;
 
-public interface UniversityServiceImpl {
+public interface University {
     UniversityDTO create(UniversityDTO universityDTO);
     List<UniversityDTO> getList();
-
-
 }

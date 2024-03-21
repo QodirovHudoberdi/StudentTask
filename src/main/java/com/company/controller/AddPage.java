@@ -1,9 +1,9 @@
 package com.company.controller;
 
-import com.company.dto.FieldStudiesDTO;
-import com.company.dto.UniversityDTO;
-import com.company.service.StudyFieldServiceImpl;
-import com.company.service.UniversityServiceImpl;
+import com.company.models.FieldStudiesDTO;
+import com.company.models.UniversityDTO;
+import com.company.interfaces.StudyField;
+import com.company.interfaces.University;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 public class AddPage {
     @Autowired
-    private UniversityServiceImpl universityInterface;
+    private University universityInterface;
     @Autowired
-    private StudyFieldServiceImpl studyFieldService;
+    private StudyField studyField;
 
     @PostMapping("/university")
     public ResponseEntity<?> create(@RequestBody UniversityDTO universityDTO) {
@@ -29,11 +29,11 @@ public class AddPage {
 
     @PostMapping("/studyField")
     public ResponseEntity<?> create(@RequestBody FieldStudiesDTO fieldstudiesDTO) {
-        return ResponseEntity.ok(studyFieldService.create(fieldstudiesDTO));
+        return ResponseEntity.ok(studyField.create(fieldstudiesDTO));
     }
 
     @GetMapping("/fieldOfStudies")
     public ResponseEntity<?> getList1() {
-        return ResponseEntity.ok(studyFieldService.getList1());
+        return ResponseEntity.ok(studyField.getList1());
     }
 }

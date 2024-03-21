@@ -1,6 +1,7 @@
 package com.company.service;
 
-import com.company.dto.UniversityDTO;
+import com.company.interfaces.University;
+import com.company.models.UniversityDTO;
 import com.company.entity.UniversityEntity;
 import com.company.repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
-public class UniversityService implements UniversityServiceImpl {
+public class UniversityService implements University {
     @Autowired
     private UniversityRepository universityRepository;
 

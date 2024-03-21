@@ -1,10 +1,10 @@
-package com.company.service;
+package com.company.interfaces;
 
-import com.company.dto.FieldStudiesDTO;
+import com.company.models.FieldStudiesDTO;
 
 import java.util.List;
 
-public interface StudyFieldServiceImpl {
+public interface StudyField {
      FieldStudiesDTO create(FieldStudiesDTO fieldstudiesDTO);
      List<FieldStudiesDTO> getList1();
 }

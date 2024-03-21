@@ -1,7 +1,7 @@
 package com.company.service;
 
-import com.company.dto.PhotoDTO;
-import com.company.dto.StudentDTO;
+import com.company.models.PhotoDTO;
+import com.company.models.StudentDTO;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -16,21 +16,23 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class ListService {
+public class DocumentService implements com.company.interfaces.Document {
     @Autowired
     private PhotoService photoService2;
     private static final String PATH = "src/main/resources/documents/";
     private static final String PATH2 = "src/main/resources/images/";
 
-    // Get Excel Document
+    /**
+     * Upload excel document to database
+     *
+     * @param dto List of students
+     */
     public void getExcel(List<StudentDTO> dto) {
         String filePath = PATH + "listOfStudents.xlsx";
         try (FileOutputStream out = new FileOutputStream(filePath)) {
@@ -81,13 +83,18 @@ public class ListService {
         }
     }
 
-    // upload PDf to Database
-
+    /**
+     * Upload pdf to database
+     *
+     * @param photo used for set profile user's image
+     */
     public void getPdf(StudentDTO dto, PhotoDTO photo) {
         String filePath = PATH + dto.getSurName() + ".pdf";
-        try (PdfWriter pdfWriter = new PdfWriter(filePath);
-             PdfDocument pdfDocument = new PdfDocument(pdfWriter);
-             Document document = new Document(pdfDocument)) {
+        try (
+                PdfWriter pdfWriter = new PdfWriter(filePath);
+                PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+                Document document = new Document(pdfDocument)
+        ) {
 
             document.add(new Paragraph(dto.getFirstName() + " " + dto.getSurName() + " " + dto.getMiddleName()).setHorizontalAlignment(HorizontalAlignment.CENTER));
             document.add(new Paragraph("Birthday: " + dto.getBirthdate()).setHorizontalAlignment(HorizontalAlignment.LEFT));

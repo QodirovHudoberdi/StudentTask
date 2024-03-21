@@ -1,4 +1,4 @@
-package com.company.dto;
+package com.company.models;
 
 import lombok.Data;
 
@@ -7,5 +7,4 @@ public class FieldStudiesDTO {
     private Integer id;
     private String name;
     private Integer UniversityId;
-
 }
