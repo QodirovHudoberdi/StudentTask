@@ -1,0 +1,22 @@
+# ===============================
+#       SERVER
+# ===============================
+server:
+  port: 8082
+
+
+
+  # ===============================
+  #       DATABASE
+  # ===============================
+
+spring:
+  datasource:
+    username: postgres
+    password: hudoberdi
+    url: jdbc:postgresql://localhost:5432/student_task0
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
