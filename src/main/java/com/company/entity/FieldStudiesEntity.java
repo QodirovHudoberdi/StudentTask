@@ -9,12 +9,12 @@ import javax.persistence.*;
 @Table(name = "FieldOfStudies")
 public class FieldStudiesEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private Integer university_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "university_id")
+    private UniversityEntity universityId;
 }

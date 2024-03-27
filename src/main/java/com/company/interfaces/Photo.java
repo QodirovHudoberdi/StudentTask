@@ -1,8 +1,8 @@
 package com.company.interfaces;
 
-import com.company.models.PhotoDTO;
-import com.company.models.StudentDTO;
+import com.company.dto.PhotoDTO;
+import com.company.dto.studen.StudentDto;
 
 public interface Photo {
-    String imageSaver(StudentDTO dto, PhotoDTO photo);
+    String imageSaver(StudentDto dto, PhotoDTO photo);
 }

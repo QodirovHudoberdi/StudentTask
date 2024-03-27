@@ -1,7 +1,7 @@
 package com.company.controller;
 
-import com.company.models.FieldStudiesDTO;
-import com.company.models.UniversityDTO;
+import com.company.dto.UniversityDTO;
+import com.company.dto.fieldstudy.FieldStudiesDto;
 import com.company.interfaces.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class EditPage {
     }
 
     @PutMapping("/fieldStudies/name/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody FieldStudiesDTO dto) {
+    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody FieldStudiesDto dto) {
         update.updateFieldName(id, dto);
         return ResponseEntity.ok().body("Successfully updated Field name of studies  ");
     }

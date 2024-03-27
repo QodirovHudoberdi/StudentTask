@@ -15,21 +15,22 @@ import java.time.LocalDateTime;
 @Table(name = "Student")
 public class StudentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false)
-    private String first_name;
+    private String firstName;
     @Column(nullable = false)
-    private String surname;
+    private String surName;
     @Column(nullable = false)
-    private String middle_name;
+    private String middleName;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StudentGender gender;
-    @Column(nullable = false, name = "study_field_id")
-    private Integer studyFieldId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "study_field_id")
+    private FieldStudiesEntity studyFieldId;
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false, name = "study_start_date")
     private LocalDate studyStartDate;
@@ -40,5 +41,5 @@ public class StudentEntity {
     @Column(nullable = false, name = "birth_date")
     private LocalDate birthDate;
     @Column(nullable = false, name = "created_date")
-    private LocalDateTime createdDate = LocalDateTime.now();
+    private LocalDateTime createdTime = LocalDateTime.now();
 }

@@ -1,13 +1,19 @@
 package com.company.interfaces;
 
-import com.company.models.StudentDTO;
+import com.company.dto.PhotoDTO;
+import com.company.dto.studen.StudentCreateDTO;
+import com.company.dto.studen.StudentDto;
 
 import java.util.List;
 
 public interface Student {
-    void updateStudent(Integer id, StudentDTO studentDTO);
+    void updateStudent(Integer id, StudentCreateDTO studentCreateDTO);
+
     void delete(Integer id);
-    StudentDTO getStudentById(Integer id);
-    StudentDTO create(StudentDTO studentDto);
-    List<StudentDTO> getList();
+
+    StudentDto getStudentById(Integer id, PhotoDTO photo);
+
+    StudentDto create(StudentCreateDTO studentCreateDto);
+
+    List<StudentDto> getList();
 }

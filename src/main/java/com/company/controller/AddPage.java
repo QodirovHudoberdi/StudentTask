@@ -1,7 +1,7 @@
 package com.company.controller;
 
-import com.company.models.FieldStudiesDTO;
-import com.company.models.UniversityDTO;
+import com.company.dto.UniversityDTO;
+import com.company.dto.fieldstudy.FieldStudiesCreateDTO;
 import com.company.interfaces.StudyField;
 import com.company.interfaces.University;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +28,12 @@ public class AddPage {
     }
 
     @PostMapping("/studyField")
-    public ResponseEntity<?> create(@RequestBody FieldStudiesDTO fieldstudiesDTO) {
-        return ResponseEntity.ok(studyField.create(fieldstudiesDTO));
+    public ResponseEntity<?> create(@RequestBody FieldStudiesCreateDTO fieldstudiesCreateDTO) {
+        return ResponseEntity.ok(studyField.create(fieldstudiesCreateDTO));
     }
 
     @GetMapping("/fieldOfStudies")
     public ResponseEntity<?> getList1() {
-        return ResponseEntity.ok(studyField.getList1());
+        return ResponseEntity.ok(studyField.getList());
     }
 }

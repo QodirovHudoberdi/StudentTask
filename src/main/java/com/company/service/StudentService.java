@@ -1,11 +1,21 @@
 package com.company.service;
 
-import com.company.interfaces.Student;
-import com.company.models.StudentDTO;
+import com.company.dto.PhotoDTO;
+import com.company.dto.UniversityDTO;
+import com.company.dto.studen.StudentCreateDTO;
+import com.company.dto.studen.StudentDto;
+import com.company.entity.FieldStudiesEntity;
 import com.company.entity.StudentEntity;
-import com.company.response.NotFoundException;
-import com.company.response.OkResponse;
+import com.company.entity.UniversityEntity;
+import com.company.exception.NotFoundException;
+import com.company.exception.OkResponse;
+import com.company.exception.WrongException;
+import com.company.interfaces.Documents;
+import com.company.interfaces.Student;
 import com.company.repository.StudentRepository;
+import com.company.repository.StudyFieldRepository;
+import com.company.repository.UniversityRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,77 +24,85 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class StudentService implements Student {
+
+    private static final ModelMapper modelMapper = new ModelMapper();
+
+
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private StudyFieldRepository studyFieldRepository;
+    @Autowired
+    private UniversityRepository universityRepository;
+    @Autowired
+    private Documents documents;
 
-    // Get Students list
+    /**
+     * Get List of students to database
+     */
+
     @Override
-    public List<StudentDTO> getList() {
+    public List<StudentDto> getList() {
         Iterable<StudentEntity> all = studentRepository.findAll();
-        List<StudentDTO> dtoList = new LinkedList<>();
+        List<StudentDto> dtoList = new LinkedList<>();
 
         all.forEach(listEntity -> {
-            StudentDTO dto = new StudentDTO();
-            dto.setId(listEntity.getId());
-            dto.setFirstName(listEntity.getFirst_name());
-            dto.setMiddleName(listEntity.getMiddle_name());
-            dto.setSurName(listEntity.getSurname());
-            dto.setDescription(listEntity.getDescription());
-            dto.setBirthdate(String.valueOf(listEntity.getBirthDate()));
-            dto.setCreatedTime(listEntity.getCreatedDate());
-            dto.setGender(listEntity.getGender());
-            dto.setStudyFieldId(listEntity.getStudyFieldId());
-            dto.setStudyStartDate(String.valueOf(listEntity.getStudyStartDate()));
-            dto.setStudyEndDate(String.valueOf(listEntity.getStudyEndDate()));
+            StudentDto dto = toStudentDto(listEntity);
             dtoList.add(dto);
         });
+        documents.getExcel(dtoList);
+
         return dtoList;
     }
 
-    // Create Student
+    /**
+     * Create student to database
+     *
+     * @param studentCreateDto fields of student which must be created
+     * @return
+     */
     @Override
-    public StudentDTO create(StudentDTO studentDto) {
-        StudentEntity student = new StudentEntity();
-        student.setId(studentDto.getId());
-        student.setFirst_name(studentDto.getFirstName());
-        student.setSurname(studentDto.getSurName());
-        student.setMiddle_name(studentDto.getMiddleName());
-        student.setDescription(studentDto.getDescription());
-        student.setGender(studentDto.getGender());
-        student.setStudyStartDate(LocalDate.parse((studentDto.getStudyStartDate())));
-        student.setStudyFieldId(studentDto.getStudyFieldId());
-        student.setBirthDate(LocalDate.parse(studentDto.getBirthdate()));
-        student.setStudyEndDate(LocalDate.parse(studentDto.getStudyStartDate()).plusYears(2));
-        studentRepository.save(student);
-        studentDto.setId(student.getId());
+    public StudentDto create(StudentCreateDTO studentCreateDto) {
+        Optional<FieldStudiesEntity> studyField = studyFieldRepository.findById(studentCreateDto.getStudyFieldId());
+        if (studyField.isEmpty()) {
+            throw new WrongException("Field of study enterred wrong");
+        }
+        FieldStudiesEntity studyfieldEntity = studyField.get();
+        Optional<UniversityEntity> university = universityRepository.findById(studyfieldEntity.getUniversityId().getId());
+        UniversityEntity universityEntity = university.get();
+        StudentEntity entity = toStudentDto(studentCreateDto);
+        studentRepository.save(entity);
+        StudentDto studentDto = toStudentDto(entity);
+        studentDto.getStudyFieldId().setName(studyfieldEntity.getName());
+        studentDto.getStudyFieldId().setUniversity(new UniversityDTO(universityEntity.getId(),universityEntity.getName()));
         return studentDto;
     }
 
-    // Get one Student
+    /**
+     * Get student from database
+     *
+     * @param id    id of student which must be search
+     * @param photo  base64's student profile photo
+     */
     @Override
-    public StudentDTO getStudentById(Integer id) {
+    public StudentDto getStudentById(Integer id, PhotoDTO photo) {
         Optional<StudentEntity> byId = studentRepository.findById(id);
         if (byId.isEmpty()) throw new NotFoundException("User Not Found ");
 
-        StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setId(byId.get().getId());
-        studentDTO.setBirthdate(String.valueOf(byId.get().getBirthDate()));
-        studentDTO.setFirstName(byId.get().getFirst_name());
-        studentDTO.setMiddleName(byId.get().getMiddle_name());
-        studentDTO.setSurName(byId.get().getSurname());
-        studentDTO.setDescription(byId.get().getDescription());
-        studentDTO.setGender(byId.get().getGender());
-        studentDTO.setStudyStartDate(String.valueOf(byId.get().getStudyStartDate()));
-        studentDTO.setStudyEndDate(String.valueOf(byId.get().getStudyEndDate()));
-        studentDTO.setCreatedTime(byId.get().getCreatedDate());
-        studentDTO.setStudyFieldId(byId.get().getStudyFieldId());
-        return studentDTO;
+        StudentEntity studentEntity = byId.get();
+        StudentDto studentDto = toStudentDto(studentEntity);
+        documents.getPdf(studentDto, photo);
+        return toStudentDto(studentEntity);
+
     }
 
-    // Delete Student
+    /**
+     * Delete student from database
+     *
+     * @param id id of student which must be deleted
+     */
     @Override
     public void delete(Integer id) {
         Optional<StudentEntity> byId = studentRepository.findById(id);
@@ -95,24 +113,21 @@ public class StudentService implements Student {
 
     }
 
-    // Edit Student's data
+    /**
+     * Upload student's data
+     *
+     * @param studentCreateDTO new fields of students
+     * @param id               id of student which must be change
+     */
     @Override
-    public void updateStudent(Integer id, StudentDTO studentDTO) {
+    public void updateStudent(Integer id, StudentCreateDTO studentCreateDTO) {
         Optional<StudentEntity> byId = studentRepository.findById(id);
         if (byId.isEmpty()) throw new NotFoundException("That student is not Found");
 
         StudentEntity studentEntity = byId.get();
-        studentEntity.setFirst_name(orElse(studentDTO.getFirstName(), studentEntity.getFirst_name()));
-        studentEntity.setSurname(orElse(studentDTO.getSurName(), studentEntity.getSurname()));
-        studentEntity.setMiddle_name(orElse(studentDTO.getMiddleName(), studentEntity.getMiddle_name()));
-        studentEntity.setDescription(orElse(studentDTO.getDescription(), studentEntity.getDescription()));
-        studentEntity.setBirthDate(elseNull(studentDTO.getBirthdate(), studentEntity.getBirthDate()));
-        studentEntity.setStudyStartDate(elseNull(studentDTO.getStudyStartDate(), studentEntity.getStudyStartDate()));
-        studentEntity.setStudyEndDate(elseNull(studentDTO.getStudyEndDate(), studentEntity.getStudyEndDate()));
-        studentEntity.setStudyFieldId(studentDTO.getStudyFieldId() == null ? studentEntity.getStudyFieldId() : studentDTO.getStudyFieldId());
-        studentEntity.setGender(studentDTO.getGender() == null ? studentEntity.getGender() : studentDTO.getGender());
-        studentRepository.save(studentEntity);
-        studentDTO.setId(studentEntity.getId());
+        StudentEntity updateStudent = toUpdateStudentDto(studentEntity, studentCreateDTO);
+        studentRepository.save(updateStudent);
+        studentCreateDTO.setId(studentEntity.getId());
         throw new OkResponse("Student Updated");
     }
 
@@ -120,7 +135,30 @@ public class StudentService implements Student {
         return value != null ? value : other;
     }
 
-    public LocalDate elseNull(String value, LocalDate other) {
-        return value != null ? LocalDate.parse(value) : other;
+    public LocalDate elseNull(LocalDate value, LocalDate other) {
+        return value != null ? value : other;
+    }
+
+
+    public static StudentEntity toStudentDto(StudentCreateDTO studentCreateDto) {
+        return modelMapper.map(studentCreateDto, StudentEntity.class);
+    }
+
+    public static StudentDto toStudentDto(StudentEntity studenEntity) {
+        return modelMapper.map(studenEntity, StudentDto.class);
+    }
+
+    private StudentEntity toUpdateStudentDto(StudentEntity studentEntity, StudentCreateDTO studentCreateDTO) {
+        studentEntity.setFirstName(orElse(studentCreateDTO.getFirstName(), studentEntity.getFirstName()));
+        studentEntity.setSurName(orElse(studentCreateDTO.getSurName(), studentEntity.getSurName()));
+        studentEntity.setMiddleName(orElse(studentCreateDTO.getMiddleName(), studentEntity.getMiddleName()));
+        studentEntity.setDescription(orElse(studentCreateDTO.getDescription(), studentEntity.getDescription()));
+        studentEntity.setBirthDate(elseNull(studentCreateDTO.getBirthDate(), studentEntity.getBirthDate()));
+        studentEntity.setStudyStartDate(elseNull(studentCreateDTO.getStudyStartDate(), studentEntity.getStudyStartDate()));
+        studentEntity.setStudyEndDate(elseNull(studentCreateDTO.getStudyEndDate(), studentEntity.getStudyEndDate()));
+        studentEntity.setStudyFieldId(studentCreateDTO.getStudyFieldId() == null ? studentEntity.getStudyFieldId() :
+                studyFieldRepository.findById(studentCreateDTO.getStudyFieldId()).get());
+        studentEntity.setGender(studentCreateDTO.getGender() == null ? studentEntity.getGender() : studentCreateDTO.getGender());
+        return studentEntity;
     }
 }

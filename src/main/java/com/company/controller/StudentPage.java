@@ -1,9 +1,9 @@
 package com.company.controller;
 
-import com.company.interfaces.Document;
+import com.company.dto.PhotoDTO;
+import com.company.dto.studen.StudentCreateDTO;
+import com.company.dto.studen.StudentDto;
 import com.company.interfaces.Student;
-import com.company.models.PhotoDTO;
-import com.company.models.StudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,28 +15,26 @@ import java.util.List;
 public class StudentPage {
     @Autowired
     private Student student;
-    @Autowired
-    private Document document;
+
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody StudentDTO profileDto) {
+    public ResponseEntity<?> create(@RequestBody StudentCreateDTO profileDto) {
         return ResponseEntity.ok(student.create(profileDto));
     }
 
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> postImage(
             @PathVariable("id") Integer id,
             @RequestBody PhotoDTO photo
     ) {
-        StudentDTO dto = student.getStudentById(id);
-        document.getPdf(dto, photo);
+        StudentDto dto = student.getStudentById(id, photo);
         return ResponseEntity.ok().body(dto);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(
             @PathVariable("id") Integer id,
-            @RequestBody StudentDTO dto
+            @RequestBody StudentCreateDTO dto
     ) {
         student.updateStudent(id, dto);
         return ResponseEntity.ok().build();
@@ -44,14 +42,8 @@ public class StudentPage {
 
     @GetMapping("")
     public ResponseEntity<?> getList() {
-        List<StudentDTO> list = student.getList();
-        document.getExcel(list);
+        List<StudentDto> list = student.getList();
         return ResponseEntity.ok(list);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getStudent(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(student.getStudentById(id));
     }
 
     @DeleteMapping("/delete/{id}")

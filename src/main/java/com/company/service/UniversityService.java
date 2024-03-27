@@ -1,8 +1,8 @@
 package com.company.service;
 
-import com.company.interfaces.University;
-import com.company.models.UniversityDTO;
+import com.company.dto.UniversityDTO;
 import com.company.entity.UniversityEntity;
+import com.company.interfaces.University;
 import com.company.repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,11 @@ public class UniversityService implements University {
     @Autowired
     private UniversityRepository universityRepository;
 
-    //Create University
+    /**
+     * Create new university to database
+     *
+     * @param universityDTO fields of university which must be created
+     */
     @Override
     public UniversityDTO create(UniversityDTO universityDTO) {
         UniversityEntity universityEntity = new UniversityEntity();
@@ -27,7 +31,9 @@ public class UniversityService implements University {
 
     }
 
-    //Get List of  Universities
+    /**
+     * Get list of universities
+     */
     @Override
     public List<UniversityDTO> getList() {
         Iterable<UniversityEntity> all = universityRepository.findAll();
@@ -40,7 +46,5 @@ public class UniversityService implements University {
 
         });
         return dtolist;
-
-
     }
 }
