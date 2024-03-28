@@ -22,9 +22,9 @@ public class AddPage {
         return ResponseEntity.ok(universityInterface.create(universityDTO));
     }
 
-    @GetMapping("/universities")
-    public ResponseEntity<?> getList() {
-        return ResponseEntity.ok(universityInterface.getList());
+    @GetMapping("/universities/pageNo={no}/pageSize={size}")
+    public ResponseEntity<?> getList(@PathVariable("no") Integer no, @PathVariable("size") Integer size) {
+        return ResponseEntity.ok(universityInterface.getList(no, size));
     }
 
     @PostMapping("/studyField")
@@ -32,8 +32,8 @@ public class AddPage {
         return ResponseEntity.ok(studyField.create(fieldstudiesCreateDTO));
     }
 
-    @GetMapping("/fieldOfStudies")
-    public ResponseEntity<?> getList1() {
-        return ResponseEntity.ok(studyField.getList());
+    @GetMapping("/fieldOfStudies/pageNo={no}/pageSize={size}")
+    public ResponseEntity<?> getList1(@PathVariable("no") Integer no, @PathVariable("size") Integer size) {
+        return ResponseEntity.ok(studyField.getList(no, size));
     }
 }

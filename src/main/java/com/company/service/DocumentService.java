@@ -2,7 +2,8 @@ package com.company.service;
 
 import com.company.dto.PhotoDTO;
 import com.company.dto.fieldstudy.FieldStudiesDto;
-import com.company.dto.studen.StudentDto;
+import com.company.dto.student.StudentDto;
+import com.company.entity.StudentEntity;
 import com.company.interfaces.Documents;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -16,6 +17,7 @@ import com.itextpdf.layout.properties.HorizontalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,14 +32,14 @@ public class DocumentService implements Documents {
     @Autowired
     private PhotoService photoService;
     private static final String PATH = "src/main/resources/documents/";
-
+    private static final ModelMapper modelMapper = new ModelMapper();
 
     /**
      * Upload excel document to database
      *
      * @param dto List of students
      */
-    public void getExcel(List<StudentDto> dto) {
+    public void getExcel(List<StudentEntity> dto) {
         String filePath = PATH + "listOfStudents.xlsx";
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             try (FileOutputStream out = new FileOutputStream(filePath)) {
@@ -58,7 +60,7 @@ public class DocumentService implements Documents {
                 headerRow.createCell(10).setCellValue("field of University");
 
                 for (int i = 0; i < dto.size(); i++) {
-                    StudentDto studenDto = dto.get(i);
+                    StudentDto studenDto = toStudentDto(dto.get(i));
                     System.out.println(studenDto.toString());
 
                     XSSFRow row = sheet.createRow(i + 1);
@@ -148,6 +150,8 @@ public class DocumentService implements Documents {
             throw new RuntimeException(e);
         }
     }
-
+    public static StudentDto toStudentDto(StudentEntity studenEntity) {
+        return modelMapper.map(studenEntity, StudentDto.class);
+    }
 
 }

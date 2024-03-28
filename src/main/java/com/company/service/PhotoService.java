@@ -1,7 +1,7 @@
 package com.company.service;
 
 import com.company.dto.PhotoDTO;
-import com.company.dto.studen.StudentDto;
+import com.company.dto.student.StudentDto;
 import com.company.interfaces.Photo;
 import com.company.utils.ImageUtils;
 import org.springframework.stereotype.Service;

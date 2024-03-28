@@ -14,7 +14,8 @@ public class FieldStudiesEntity {
 
     @Column(nullable = false)
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "university_id")
     private UniversityEntity universityId;
+
 }

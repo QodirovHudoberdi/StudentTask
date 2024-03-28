@@ -28,7 +28,7 @@ public class StudentEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StudentGender gender;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "study_field_id")
     private FieldStudiesEntity studyFieldId;
     @JsonFormat(pattern = "dd/MM/yyyy")
