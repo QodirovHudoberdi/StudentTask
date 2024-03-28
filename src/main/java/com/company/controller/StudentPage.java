@@ -1,14 +1,12 @@
 package com.company.controller;
 
 import com.company.dto.PhotoDTO;
-import com.company.dto.studen.StudentCreateDTO;
-import com.company.dto.studen.StudentDto;
+import com.company.dto.student.StudentCreateDTO;
+import com.company.dto.student.StudentDto;
 import com.company.interfaces.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("student")
@@ -36,14 +34,18 @@ public class StudentPage {
             @PathVariable("id") Integer id,
             @RequestBody StudentCreateDTO dto
     ) {
-        student.updateStudent(id, dto);
-        return ResponseEntity.ok().build();
+
+        return ResponseEntity.ok(student.updateStudent(id, dto));
     }
 
-    @GetMapping("")
+    @GetMapping("/pageNo={no}/pageSize={size}")
+    public ResponseEntity<?> getList(@PathVariable("no") Integer no, @PathVariable("size") Integer size) {
+        return ResponseEntity.ok(student.getList(no, size));
+    }
+    @GetMapping("getExcel")
     public ResponseEntity<?> getList() {
-        List<StudentDto> list = student.getList();
-        return ResponseEntity.ok(list);
+        student.getList1();
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete/{id}")

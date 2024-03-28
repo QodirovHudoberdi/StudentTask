@@ -1,4 +1,4 @@
-package com.company.dto.studen;
+package com.company.dto.student;
 
 import com.company.dto.fieldstudy.FieldStudiesDto;
 import com.company.enums.StudentGender;
