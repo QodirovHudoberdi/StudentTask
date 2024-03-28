@@ -13,8 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -52,15 +53,14 @@ public class StudyFieldService implements StudyField {
      */
 
     public List<FieldStudiesEntity> getList(Integer pageNo, Integer pageSize) {
-        Pageable page= PageRequest.of(pageNo,pageSize, Sort.by("id"));
-        Page<FieldStudiesEntity> page1=studyFieldRepository.findAll(page);
+        Pageable page = PageRequest.of(pageNo, pageSize, Sort.by("id"));
+        Page<FieldStudiesEntity> page1 = studyFieldRepository.findAll(page);
 
-      //  log.info("Request Get List  {}  of field studies", pageSize);
         if (page1.hasContent()) {
             return page1.getContent();
-        }else {
-            Pageable page11= PageRequest.of(0,5, Sort.by("id"));
-            Page<FieldStudiesEntity> pageDefault=studyFieldRepository.findAll(page11);
+        } else {
+            Pageable page11 = PageRequest.of(0, 5, Sort.by("id"));
+            Page<FieldStudiesEntity> pageDefault = studyFieldRepository.findAll(page11);
             return pageDefault.getContent();
         }
     }

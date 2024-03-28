@@ -43,9 +43,7 @@ public class DocumentService implements Documents {
         String filePath = PATH + "listOfStudents.xlsx";
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             try (FileOutputStream out = new FileOutputStream(filePath)) {
-
                 XSSFSheet sheet = workbook.createSheet("students");
-
                 XSSFRow headerRow = sheet.createRow(0);
                 headerRow.createCell(0).setCellValue("ID");
                 headerRow.createCell(1).setCellValue("First Name");
@@ -58,18 +56,14 @@ public class DocumentService implements Documents {
                 headerRow.createCell(8).setCellValue("Study End Date");
                 headerRow.createCell(9).setCellValue("University Study");
                 headerRow.createCell(10).setCellValue("field of University");
-
                 for (int i = 0; i < dto.size(); i++) {
                     StudentDto studenDto = toStudentDto(dto.get(i));
-                    System.out.println(studenDto.toString());
-
                     XSSFRow row = sheet.createRow(i + 1);
                     row.createCell(0).setCellValue(studenDto.getId());
                     row.createCell(1).setCellValue(studenDto.getFirstName());
                     row.createCell(2).setCellValue(studenDto.getMiddleName());
                     row.createCell(3).setCellValue(studenDto.getSurName());
                     row.createCell(4).setCellValue(String.valueOf(studenDto.getGender()));
-
                     LocalDate birthdate = studenDto.getBirthDate();
                     LocalDate createdDate = studenDto.getCreatedTime().toLocalDate();
                     LocalDate studyStartDate = studenDto.getStudyStartDate();
@@ -81,14 +75,11 @@ public class DocumentService implements Documents {
                     row.createCell(8).setCellValue(String.valueOf(studyEndDate));
                     row.createCell(9).setCellValue(studyField.getUniversity().getName());
                     row.createCell(10).setCellValue(studyField.getName());
-
                 }
-
                 int columnCount = headerRow.getLastCellNum();
                 for (int i = 0; i < columnCount; i++) {
                     sheet.autoSizeColumn(i);
                 }
-
                 workbook.write(out);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -153,5 +144,4 @@ public class DocumentService implements Documents {
     public static StudentDto toStudentDto(StudentEntity studenEntity) {
         return modelMapper.map(studenEntity, StudentDto.class);
     }
-
 }

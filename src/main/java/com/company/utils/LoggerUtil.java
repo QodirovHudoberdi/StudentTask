@@ -30,7 +30,7 @@ import java.util.logging.SimpleFormatter;
 
             logger.addHandler(fileHandler);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

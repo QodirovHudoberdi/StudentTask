@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 public class UniversityService implements University {
-   LoggerUtil loggerUtil=new LoggerUtil();
+    LoggerUtil loggerUtil = new LoggerUtil();
 
 
     @Autowired
@@ -29,7 +29,6 @@ public class UniversityService implements University {
      */
     @Override
     public UniversityDTO create(UniversityDTO universityDTO) {
-      //  loggerUtil.initializeLogger();
         UniversityEntity universityEntity = new UniversityEntity();
         universityEntity.setName(universityDTO.getName());
         universityRepository.save(universityEntity);
@@ -37,21 +36,21 @@ public class UniversityService implements University {
         loggerUtil.logInfo("Create new University");
         return universityDTO;
     }
+
     /**
      * Get list of universities
      */
     @Override
     public List<UniversityEntity> getList(Integer pageNo, Integer pageSize) {
-    loggerUtil.initializeLogger();
-        Pageable page= PageRequest.of(pageNo,pageSize, Sort.by("id"));
-        Page<UniversityEntity> page1=universityRepository.findAll(page);
+        loggerUtil.initializeLogger();
+        Pageable page = PageRequest.of(pageNo, pageSize, Sort.by("id"));
+        Page<UniversityEntity> page1 = universityRepository.findAll(page);
         loggerUtil.logInfo("Get list of Universities ");
-        //  log.info("Request Get List  {}  of field studies", pageSize);
         if (page1.hasContent()) {
             return page1.getContent();
-        }else {
-            Pageable page11= PageRequest.of(0,5, Sort.by("createdTime"));
-            Page<UniversityEntity> pageDefault=universityRepository.findAll(page11);
+        } else {
+            Pageable page11 = PageRequest.of(0, 5, Sort.by("createdTime"));
+            Page<UniversityEntity> pageDefault = universityRepository.findAll(page11);
             return pageDefault.getContent();
         }
 

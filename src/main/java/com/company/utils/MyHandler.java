@@ -22,5 +22,4 @@ public class MyHandler extends StreamHandler {
     public void close() throws SecurityException {
         super.close();
     }
-
 }
