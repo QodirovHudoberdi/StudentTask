@@ -1,95 +1,97 @@
 package com.company.service;
 
+import com.company.NetworkDataService;
 import com.company.dto.PhotoDTO;
-import com.company.dto.UniversityDTO;
-import com.company.dto.student.StudentCreateDTO;
+import com.company.dto.fieldstudy.FieldStudiesDto;
 import com.company.dto.student.StudentDto;
+import com.company.dto.student.StudentRequestDTO;
 import com.company.entity.FieldStudiesEntity;
 import com.company.entity.StudentEntity;
-import com.company.entity.UniversityEntity;
 import com.company.exception.NotFoundException;
 import com.company.exception.OkResponse;
 import com.company.exception.WrongException;
 import com.company.interfaces.Documents;
 import com.company.interfaces.Student;
+import com.company.mapper.FieldStudyMapper;
+import com.company.mapper.StudentMapper;
 import com.company.repository.StudentRepository;
 import com.company.repository.StudyFieldRepository;
-import com.company.repository.UniversityRepository;
-import com.company.utils.LoggerUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Set;
+
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class StudentService implements Student {
-    LoggerUtil loggerUtil = new LoggerUtil();
-    private static final Logger logger = Logger.getLogger("StudentServiceLogging");
-    private static final ModelMapper modelMapper = new ModelMapper();
 
-
-    @Autowired
-    private StudentRepository studentRepository;
-    @Autowired
-    private StudyFieldRepository studyFieldRepository;
-    @Autowired
-    private UniversityRepository universityRepository;
-    @Autowired
-    private Documents documents;
+    private final static Logger LOG = LoggerFactory.getLogger(StudentService.class);
+    private final NetworkDataService networkDataService;
+    private final StudentMapper studentMapper;
+    private final StudentRepository studentRepository;
+    private final StudyFieldRepository studyFieldRepository;
+    private final Documents documents;
+    private final FieldStudyMapper fieldStudyMapper;
 
     /**
      * Get List of students to database
      */
 
     @Override
-    public List<StudentEntity> getList(Integer pageNo, Integer pageSize) {
+    public List<StudentDto> getList(Integer pageNo, Integer pageSize, HttpServletRequest httpServletRequest) {
+        String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
+        String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
+
         Pageable page = PageRequest.of(pageNo, pageSize, Sort.by("createdTime"));
         Page<StudentEntity> page1 = studentRepository.findAll(page);
-        //logger.log(Level.INFO, "Creating a new student:");
-        loggerUtil.initializeLogger();
-        loggerUtil.logInfo("Get list of Students ");
-        if (page1.hasContent()) {
-            return page1.getContent();
-        } else {
-            Pageable page11 = PageRequest.of(0, 10, Sort.by("createdTime"));
-            Page<StudentEntity> pageDefault = studentRepository.findAll(page11);
-            return pageDefault.getContent();
-        }
+        LOG.info("Get Students List   \t\t {}", page1);
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
+        return studentMapper.toDto(page1);
     }
+
 
     /**
      * Create student to database
      *
-     * @param studentCreateDto fields of student which must be created
-     * @return
+     * @param studentRequestDto fields of student which must be created
      */
     @Override
-    public StudentDto create(StudentCreateDTO studentCreateDto) {
-        logger.log(Level.INFO, "Creating a new student: {0}", studentCreateDto.getFirstName() + " " + studentCreateDto.getSurName());
-        Optional<FieldStudiesEntity> studyField = studyFieldRepository.findById(studentCreateDto.getStudyFieldId());
-        if (studyField.isEmpty()) {
-            throw new WrongException("Field of study enterred wrong");
+    public StudentDto create(StudentRequestDTO studentRequestDto, HttpServletRequest httpServletRequest) {
+        String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
+        String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
+        validation(studentRequestDto);
+        Optional<FieldStudiesEntity> byId = studyFieldRepository.findById(studentRequestDto.getStudyFieldId());
+        if (byId.isEmpty()) {
+            LOG.warn("Not study Field : Id not Found   \t\t {}", studentRequestDto.getStudyFieldId());
+            LOG.info("Client host : \t\t {}", ClientInfo);
+            LOG.info("Client IP :  \t\t {}", ClientIP);
+            throw new NotFoundException("That study Field is not Found");
         }
-        FieldStudiesEntity studyfieldEntity = studyField.get();
-        Optional<UniversityEntity> university = universityRepository.findById(studyfieldEntity.getUniversityId().getId());
-        UniversityEntity universityEntity = university.get();
-        StudentEntity entity = toStudentEntity(studentCreateDto);
-        studentRepository.save(entity);
-        StudentDto studentDto = toStudentDto(entity);
-        studentDto.getStudyFieldId().setName(studyfieldEntity.getName());
-        studentDto.getStudyFieldId().setUniversity(new UniversityDTO(universityEntity.getId(), universityEntity.getName()));
-        return studentDto;
+
+        StudentEntity studentEntity = studentMapper.toEntity(studentRequestDto);
+        fieldStudyMapper.toDto(byId.get());
+        studentEntity.setStudyField(byId.get());
+        studentRepository.save(studentEntity);
+        LOG.info("create student  \t\t {}", studentRequestDto);
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
+        return studentMapper.toDto(studentEntity);
     }
 
     /**
@@ -99,16 +101,27 @@ public class StudentService implements Student {
      * @param photo base64's student profile photo
      */
     @Override
-    public StudentDto getStudentById(Integer id, PhotoDTO photo) {
-        logger.log(Level.INFO, "Getting student by ID: {0}", id);
+    public StudentDto getStudentById(Integer id, PhotoDTO photo, HttpServletRequest httpServletRequest) {
+        String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
+        String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
+
         Optional<StudentEntity> byId = studentRepository.findById(id);
-        if (byId.isEmpty()) throw new NotFoundException("User Not Found ");
+        if (byId.isEmpty()) {
+            LOG.warn("Student not Found   \t\t {}", id);
+            LOG.info("Client host : \t\t {}", ClientInfo);
+            LOG.info("Client IP :  \t\t {}", ClientIP);
+            throw new NotFoundException("User Not Found ");
+        }
 
         StudentEntity studentEntity = byId.get();
-        StudentDto studentDto = toStudentDto(studentEntity);
+        StudentDto studentDto = studentMapper.toDto(studentEntity);
+        FieldStudiesDto dto = fieldStudyMapper.toDto(studentEntity.getStudyField());
+        studentDto.setStudyFieldId(dto);
+        LOG.info("Get one Student by Id   \t\t {}", studentDto);
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
         documents.getPdf(studentDto, photo);
-        return toStudentDto(studentEntity);
-
+        return studentDto;
     }
 
     /**
@@ -117,14 +130,20 @@ public class StudentService implements Student {
      * @param id id of student which must be deleted
      */
     @Override
-    public void delete(Integer id) {
-        logger.log(Level.INFO, "Deleting student with ID: {0}", id);
+    public void delete(Integer id, HttpServletRequest httpServletRequest) {
+        String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
+        String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
         Optional<StudentEntity> byId = studentRepository.findById(id);
         if (byId.isEmpty()) {
-            logger.log(Level.WARNING, "NOT Delete  student ");
+            LOG.warn("Not Delete student : Id not Found   \t\t {}", id);
+            LOG.info("Client host : \t\t {}", ClientInfo);
+            LOG.info("Client IP :  \t\t {}", ClientIP);
             throw new NotFoundException("Student Not Found");
         }
         studentRepository.delete(byId.get());
+        LOG.info("Delete Student by Id :   \t\t {}", id);
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
         throw new OkResponse("Deleted");
 
     }
@@ -132,56 +151,50 @@ public class StudentService implements Student {
     /**
      * Upload student's data
      *
-     * @param studentCreateDTO new fields of students
-     * @param id               id of student which must be change
+     * @param studentRequestDTO new fields of students
+     * @param id                id of student which must be change
      */
     @Override
-    public StudentDto updateStudent(Integer id, StudentCreateDTO studentCreateDTO) {
-        logger.log(Level.INFO, "Updating student with ID: {0}", id);
+    public StudentDto updateStudent(Integer id, StudentRequestDTO studentRequestDTO, HttpServletRequest httpServletRequest) {
+        String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
+        String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
+
         Optional<StudentEntity> byId = studentRepository.findById(id);
-        if (byId.isEmpty()) throw new NotFoundException("That student is not Found");
+        if (byId.isEmpty()) {
+            LOG.warn("Not Update student : Id not Found   \t\t {}", id);
+            LOG.info("Client host : \t\t {}", ClientInfo);
+            LOG.info("Client IP :  \t\t {}", ClientIP);
+            throw new NotFoundException("That student is not Found");
+        }
 
         StudentEntity studentEntity = byId.get();
-        StudentEntity updateStudent = toUpdateStudentDto(studentEntity, studentCreateDTO);
-        studentRepository.save(updateStudent);
-        return toStudentDto(updateStudent);
+
+        studentRepository.save(studentMapper.updateFromDto(studentRequestDTO, studentEntity));
+        LOG.info("Update Student by Id :   \t\t {}", studentEntity);
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
+
+        return studentMapper.toDto(studentEntity);
 
     }
 
     @Override
     public void getList1() {
+
         documents.getExcel(studentRepository.findAll());
         throw new OkResponse("Excel File Is Successfully create");
     }
 
-    public String orElse(String value, String other) {
-        return value != null ? value : other;
-    }
+    public void validation(StudentRequestDTO studentRequestDTO) {
+        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+        Set<ConstraintViolation<StudentRequestDTO>> violations = validator.validate(studentRequestDTO);
 
-    public LocalDate elseNull(LocalDate value, LocalDate other) {
-        return value != null ? value : other;
-    }
-
-
-    public static StudentEntity toStudentEntity(StudentCreateDTO studentCreateDto) {
-        return modelMapper.map(studentCreateDto, StudentEntity.class);
-    }
-
-    public static StudentDto toStudentDto(StudentEntity studenEntity) {
-        return modelMapper.map(studenEntity, StudentDto.class);
-    }
-
-    private StudentEntity toUpdateStudentDto(StudentEntity studentEntity, StudentCreateDTO studentCreateDTO) {
-        studentEntity.setFirstName(orElse(studentCreateDTO.getFirstName(), studentEntity.getFirstName()));
-        studentEntity.setSurName(orElse(studentCreateDTO.getSurName(), studentEntity.getSurName()));
-        studentEntity.setMiddleName(orElse(studentCreateDTO.getMiddleName(), studentEntity.getMiddleName()));
-        studentEntity.setDescription(orElse(studentCreateDTO.getDescription(), studentEntity.getDescription()));
-        studentEntity.setBirthDate(elseNull(studentCreateDTO.getBirthDate(), studentEntity.getBirthDate()));
-        studentEntity.setStudyStartDate(elseNull(studentCreateDTO.getStudyStartDate(), studentEntity.getStudyStartDate()));
-        studentEntity.setStudyEndDate(elseNull(studentCreateDTO.getStudyEndDate(), studentEntity.getStudyEndDate()));
-        studentEntity.setStudyFieldId(studentCreateDTO.getStudyFieldId() == null ? studentEntity.getStudyFieldId() :
-                studyFieldRepository.findById(studentCreateDTO.getStudyFieldId()).get());
-        studentEntity.setGender(studentCreateDTO.getGender() == null ? studentEntity.getGender() : studentCreateDTO.getGender());
-        return studentEntity;
+        if (!violations.isEmpty()) {
+            StringBuilder errorMessage = new StringBuilder();
+            for (ConstraintViolation<StudentRequestDTO> violation : violations) {
+                errorMessage.append(violation.getPropertyPath()).append(" Entered wrong ");
+            }
+            throw new WrongException(errorMessage.toString());
+        }
     }
 }

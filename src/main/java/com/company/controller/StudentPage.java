@@ -1,12 +1,14 @@
 package com.company.controller;
 
 import com.company.dto.PhotoDTO;
-import com.company.dto.student.StudentCreateDTO;
+import com.company.dto.student.StudentRequestDTO;
 import com.company.dto.student.StudentDto;
 import com.company.interfaces.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("student")
@@ -16,31 +18,33 @@ public class StudentPage {
 
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody StudentCreateDTO profileDto) {
-        return ResponseEntity.ok(student.create(profileDto));
+    public ResponseEntity<?> create(@RequestBody StudentRequestDTO profileDto, HttpServletRequest httpServletRequest) {
+        return ResponseEntity.ok(student.create(profileDto,httpServletRequest));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> postImage(
             @PathVariable("id") Integer id,
-            @RequestBody PhotoDTO photo
-    ) {
-        StudentDto dto = student.getStudentById(id, photo);
+            @RequestBody PhotoDTO photo,
+            HttpServletRequest httpServletRequest
+   ) {
+        StudentDto dto = student.getStudentById(id, photo, httpServletRequest);
         return ResponseEntity.ok().body(dto);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(
             @PathVariable("id") Integer id,
-            @RequestBody StudentCreateDTO dto
+            @RequestBody StudentRequestDTO dto,
+            HttpServletRequest httpServletReques
     ) {
 
-        return ResponseEntity.ok(student.updateStudent(id, dto));
+        return ResponseEntity.ok(student.updateStudent(id, dto,httpServletReques));
     }
 
     @GetMapping("/pageNo={no}/pageSize={size}")
-    public ResponseEntity<?> getList(@PathVariable("no") Integer no, @PathVariable("size") Integer size) {
-        return ResponseEntity.ok(student.getList(no, size));
+    public ResponseEntity<?> getList(@PathVariable("no") Integer no, @PathVariable("size") Integer size,HttpServletRequest httpServletRequest) {
+        return ResponseEntity.ok(student.getList(no, size,httpServletRequest));
     }
     @GetMapping("getExcel")
     public ResponseEntity<?> getList() {
@@ -49,8 +53,8 @@ public class StudentPage {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> create(@PathVariable("id") Integer id) {
-        student.delete(id);
+    public ResponseEntity<?> create(@PathVariable("id") Integer id,HttpServletRequest httpServletRequest) {
+        student.delete(id,httpServletRequest);
         return ResponseEntity.ok().build();
     }
 }

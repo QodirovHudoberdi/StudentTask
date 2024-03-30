@@ -10,7 +10,7 @@ import java.util.logging.SimpleFormatter;
 
     public class LoggerUtil {
         private static final String LOG_FOLDER_PATH = "src/main/log/";
-        private static final String LOG_FILE_NAME = "application.log";
+        private static final String LOG_FILE_NAME = "application.txt";
 
     private static Logger logger;
 
@@ -38,11 +38,11 @@ import java.util.logging.SimpleFormatter;
         logger.info(message);
     }
 
-    public static void logWarning(String message) {
+    public  void logWarning(String message) {
         logger.warning(message);
     }
 
-    public static void logError(String message) {
+    public  void logError(String message) {
         logger.severe(message);
     }
 }

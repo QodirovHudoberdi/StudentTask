@@ -16,7 +16,6 @@ import java.util.logging.SimpleFormatter;
 
 
 public class ImageUtils {
-    private static final Logger LOGGER = Logger.getLogger(StudentService.class.getName());
 
     /**
      * Create image file and save to disc

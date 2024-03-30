@@ -1,9 +1,11 @@
 package com.company.dto.fieldstudy;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class FieldStudiesCreateDTO {
+@Getter
+@Setter
+public class FieldStudiesRequestDTO {
     private Integer id;
     private String name;
     private Integer UniversityId;

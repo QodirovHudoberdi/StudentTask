@@ -16,6 +16,6 @@ public class FieldStudiesEntity {
     private String name;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "university_id")
-    private UniversityEntity universityId;
+    private UniversityEntity university;
 
 }

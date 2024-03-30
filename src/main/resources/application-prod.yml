@@ -12,9 +12,9 @@ server:
 
 spring:
   datasource:
-    username: username_yourDb
-    password: password
-    url: jdbc:postgresql://localhost:5432/db_name
+    username: postgres
+    password: hudoberdi
+    url: jdbc:postgresql://localhost:5432/student_task0
 
   jpa:
     hibernate:

@@ -1,13 +1,13 @@
 package com.company.interfaces;
 
-import com.company.dto.fieldstudy.FieldStudiesCreateDTO;
+import com.company.dto.fieldstudy.FieldStudiesRequestDTO;
 import com.company.dto.fieldstudy.FieldStudiesDto;
-import com.company.entity.FieldStudiesEntity;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface StudyField {
-    FieldStudiesDto create(FieldStudiesCreateDTO fieldStudiesCreateDTO);
+    FieldStudiesDto create(FieldStudiesRequestDTO fieldStudiesRequestDTO, HttpServletRequest httpServletRequest);
 
-    List<FieldStudiesEntity> getList(Integer no, Integer size);
+    List<FieldStudiesDto> getList(Integer no, Integer size, HttpServletRequest httpServletRequest);
 }

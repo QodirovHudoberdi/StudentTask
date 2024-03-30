@@ -1,5 +1,6 @@
 package com.company.service;
 
+import com.company.config.ComponentContainer;
 import com.company.dto.UniversityDTO;
 import com.company.dto.fieldstudy.FieldStudiesDto;
 import com.company.entity.FieldStudiesEntity;
@@ -10,17 +11,20 @@ import com.company.exception.WrongException;
 import com.company.interfaces.Update;
 import com.company.repository.StudyFieldRepository;
 import com.company.repository.UniversityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.company.utils.LoggerUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class UpdateService implements Update {
-    @Autowired
-    private UniversityRepository universityRepository;
-    @Autowired
-    private StudyFieldRepository studyFieldRepository;
+    LoggerUtil loggerUtil = ComponentContainer.loggerUtil;
+
+    private final UniversityRepository universityRepository;
+
+    private final StudyFieldRepository studyFieldRepository;
 
     /**
      * Update university Name
@@ -29,6 +33,7 @@ public class UpdateService implements Update {
      */
     @Override
     public void updateUniversityName(UniversityDTO universityDTO, Integer id) {
+        loggerUtil.logInfo("Update University details ");
         Optional<UniversityEntity> byId = universityRepository.findById(id);
         if (byId.isEmpty()) {
             throw new NotFoundException("University  Not Found ");
@@ -50,13 +55,16 @@ public class UpdateService implements Update {
     public void updateFieldName(Integer id, FieldStudiesDto dto) {
         Optional<FieldStudiesEntity> byId = studyFieldRepository.findById(id);
         if (byId.isEmpty()) {
+            loggerUtil.logWarning("Field Of Study  Not Found ");
             throw new NotFoundException("Field Of Study  Not Found ");
         }
         if (byId.get().getName().equals(dto.getName())) {
+            loggerUtil.logWarning("It is Old Field Name of Study");
             throw new WrongException("It is Old Field Name of Study");
         }
         byId.get().setName(dto.getName());
         studyFieldRepository.save(byId.get());
+        loggerUtil.logInfo("Update Field of study details ");
         throw new OkResponse("Field Name was updated ");
     }
 }

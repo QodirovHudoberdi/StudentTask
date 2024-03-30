@@ -3,14 +3,18 @@ package com.company.dto.student;
 import com.company.enums.StudentGender;
 import lombok.Data;
 
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
-public class StudentCreateDTO {
+public class StudentRequestDTO {
     private Integer id;
+    @Size(min = 2,max =30)
     private String firstName;
+    @Size(min = 2,max =30)
     private String surName;
+    @Size(min = 2,max =30)
     private String middleName;
     private String description;
     private StudentGender gender;

@@ -30,7 +30,7 @@ public class StudentEntity {
     private StudentGender gender;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "study_field_id")
-    private FieldStudiesEntity studyFieldId;
+    private FieldStudiesEntity studyField;
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false, name = "study_start_date")
     private LocalDate studyStartDate;

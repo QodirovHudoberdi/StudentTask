@@ -54,7 +54,7 @@ public class DocumentService implements Documents {
                 headerRow.createCell(6).setCellValue("Created Date");
                 headerRow.createCell(7).setCellValue("Study Start Date");
                 headerRow.createCell(8).setCellValue("Study End Date");
-                headerRow.createCell(9).setCellValue("University Study");
+                headerRow.createCell(9).setCellValue("University");
                 headerRow.createCell(10).setCellValue("field of University");
                 for (int i = 0; i < dto.size(); i++) {
                     StudentDto studenDto = toStudentDto(dto.get(i));
@@ -118,7 +118,7 @@ public class DocumentService implements Documents {
                     + birthday.getMonth() + " " + birthday.getDayOfMonth() + " , " + birthday.getYear()
             ).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(10).setWidth(300).setMarginRight(40).setMarginTop(-110));
             FieldStudiesDto studyField = dto.getStudyFieldId();
-            document.add(new Paragraph("Study at  :  " + studyField.getUniversity().getName() + " University  Field  of  "
+                    document.add(new Paragraph("Study at  :  " + studyField.getUniversity().getName() + " University  Field  of  "
                     + studyField.getName()
             ).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(12).setWidth(300).setMarginRight(40));
 
