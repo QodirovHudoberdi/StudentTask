@@ -1,4 +1,4 @@
-package com.company.enums;
+package com.company.aggregation.enums;
 
 public enum StudentGender {
     MALE,FEMALE;

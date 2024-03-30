@@ -1,4 +1,4 @@
-package com.company.dto.fieldstudy;
+package com.company.aggregation.dto.fieldstudy;
 
 import lombok.Getter;
 import lombok.Setter;

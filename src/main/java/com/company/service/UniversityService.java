@@ -1,9 +1,9 @@
 package com.company.service;
 
-import com.company.NetworkDataService;
-import com.company.dto.UniversityDTO;
-import com.company.entity.UniversityEntity;
-import com.company.interfaces.University;
+import com.company.aggregation.config.NetworkDataService;
+import com.company.aggregation.dto.UniversityDTO;
+import com.company.aggregation.entity.UniversityEntity;
+import com.company.service.interfaces.University;
 import com.company.mapper.UniversityMapper;
 import com.company.repository.UniversityRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,12 +38,12 @@ public class UniversityService implements University {
     public UniversityDTO create(UniversityDTO universityDTO, HttpServletRequest httpServletRequest) {
         String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
         String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
 
         UniversityEntity universityEntity = universityMapper.toEntity(universityDTO);
         universityRepository.save(universityEntity);
         LOG.info("create University   \t\t {}", universityDTO);
-        LOG.info("Client host : \t\t {}", ClientInfo);
-        LOG.info("Client IP :  \t\t {}", ClientIP);
         return universityMapper.toDto(universityEntity);
     }
 
@@ -56,12 +56,11 @@ public class UniversityService implements University {
     public List<UniversityDTO> getList(Integer pageNo, Integer pageSize, HttpServletRequest httpServletRequest) {
         String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
         String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
-
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
         Pageable page = PageRequest.of(pageNo, pageSize, Sort.by("id"));
         Page<UniversityEntity> page1 = universityRepository.findAll(page);
         LOG.info("Get List of Universities   \t\t {}", pageSize);
-        LOG.info("Client host : \t\t {}", ClientInfo);
-        LOG.info("Client IP :  \t\t {}", ClientIP);
         return universityMapper.toDto(page1.getContent());
 
     }

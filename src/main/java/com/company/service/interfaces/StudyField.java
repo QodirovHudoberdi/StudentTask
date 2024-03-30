@@ -1,7 +1,7 @@
-package com.company.interfaces;
+package com.company.service.interfaces;
 
-import com.company.dto.fieldstudy.FieldStudiesRequestDTO;
-import com.company.dto.fieldstudy.FieldStudiesDto;
+import com.company.aggregation.dto.fieldstudy.FieldStudiesRequestDTO;
+import com.company.aggregation.dto.fieldstudy.FieldStudiesDto;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

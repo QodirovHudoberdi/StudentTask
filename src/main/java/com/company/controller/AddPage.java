@@ -1,9 +1,9 @@
 package com.company.controller;
 
-import com.company.dto.UniversityDTO;
-import com.company.dto.fieldstudy.FieldStudiesRequestDTO;
-import com.company.interfaces.StudyField;
-import com.company.interfaces.University;
+import com.company.aggregation.dto.UniversityDTO;
+import com.company.aggregation.dto.fieldstudy.FieldStudiesRequestDTO;
+import com.company.service.interfaces.StudyField;
+import com.company.service.interfaces.University;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

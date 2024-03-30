@@ -1,34 +1,44 @@
 package com.company.exception;
 
-import com.company.dto.ResponseMessage;
+import com.company.aggregation.dto.ResponseMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+@Slf4j
 @RestControllerAdvice
 public class ControllerAdvice {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<?> on(NotFoundException e) {
-        final ResponseMessage result = new ResponseMessage(404, "Not Found", e.getMessage());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+        log.error("Not Found Exception : {}", e.getMessage());
+        final ResponseMessage result = new ResponseMessage(HttpStatus.NOT_FOUND.value(), "Not Found",
+                e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
     }
 
     @ExceptionHandler(AlreadyExistException.class)
     public ResponseEntity<?> on(AlreadyExistException e) {
-        final ResponseMessage result = new ResponseMessage(250, "Already exist", e.getMessage());
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
+        log.error("Already Exist Exception : {}", e.getMessage());
+        final ResponseMessage result = new ResponseMessage(HttpStatus.CONTINUE.value(), "Already exist",
+                e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONTINUE).body(result);
     }
 
     @ExceptionHandler(WrongException.class)
     public ResponseEntity<?> on(WrongException e) {
-        final ResponseMessage result = new ResponseMessage(303, "Something went wrong", e.getMessage());
+        log.error("Wrong Exception : {}", e.getMessage());
+        final ResponseMessage result = new ResponseMessage(HttpStatus.CONFLICT.value(), "Something went wrong",
+                e.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(result);
     }
 
     @ExceptionHandler(OkResponse.class)
     public ResponseEntity<?> on(OkResponse e) {
-        final ResponseMessage result = new ResponseMessage(200, "All successfully done ", e.getMessage());
+        log.error("Success Response : {}", e.getMessage());
+        final ResponseMessage result = new ResponseMessage(HttpStatus.OK.value(), "All successfully done ",
+                e.getMessage());
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
     }
 }

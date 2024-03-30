@@ -1,6 +1,6 @@
-package com.company.dto.student;
+package com.company.aggregation.dto.student;
 
-import com.company.enums.StudentGender;
+import com.company.aggregation.enums.StudentGender;
 import lombok.Data;
 
 import javax.validation.constraints.Size;

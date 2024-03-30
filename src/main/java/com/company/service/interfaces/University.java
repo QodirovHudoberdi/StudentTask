@@ -1,6 +1,6 @@
-package com.company.interfaces;
+package com.company.service.interfaces;
 
-import com.company.dto.UniversityDTO;
+import com.company.aggregation.dto.UniversityDTO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

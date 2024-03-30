@@ -1,17 +1,17 @@
 package com.company.service;
 
-import com.company.NetworkDataService;
-import com.company.dto.PhotoDTO;
-import com.company.dto.fieldstudy.FieldStudiesDto;
-import com.company.dto.student.StudentDto;
-import com.company.dto.student.StudentRequestDTO;
-import com.company.entity.FieldStudiesEntity;
-import com.company.entity.StudentEntity;
+import com.company.aggregation.config.NetworkDataService;
+import com.company.aggregation.dto.PhotoDTO;
+import com.company.aggregation.dto.fieldstudy.FieldStudiesDto;
+import com.company.aggregation.dto.student.StudentDto;
+import com.company.aggregation.dto.student.StudentRequestDTO;
+import com.company.aggregation.entity.FieldStudiesEntity;
+import com.company.aggregation.entity.StudentEntity;
 import com.company.exception.NotFoundException;
 import com.company.exception.OkResponse;
 import com.company.exception.WrongException;
-import com.company.interfaces.Documents;
-import com.company.interfaces.Student;
+import com.company.service.interfaces.Documents;
+import com.company.service.interfaces.Student;
 import com.company.mapper.FieldStudyMapper;
 import com.company.mapper.StudentMapper;
 import com.company.repository.StudentRepository;
@@ -75,23 +75,25 @@ public class StudentService implements Student {
     public StudentDto create(StudentRequestDTO studentRequestDto, HttpServletRequest httpServletRequest) {
         String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
         String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
         validation(studentRequestDto);
         Optional<FieldStudiesEntity> byId = studyFieldRepository.findById(studentRequestDto.getStudyFieldId());
         if (byId.isEmpty()) {
             LOG.warn("Not study Field : Id not Found   \t\t {}", studentRequestDto.getStudyFieldId());
-            LOG.info("Client host : \t\t {}", ClientInfo);
-            LOG.info("Client IP :  \t\t {}", ClientIP);
             throw new NotFoundException("That study Field is not Found");
         }
 
         StudentEntity studentEntity = studentMapper.toEntity(studentRequestDto);
-        fieldStudyMapper.toDto(byId.get());
         studentEntity.setStudyField(byId.get());
         studentRepository.save(studentEntity);
+
         LOG.info("create student  \t\t {}", studentRequestDto);
-        LOG.info("Client host : \t\t {}", ClientInfo);
-        LOG.info("Client IP :  \t\t {}", ClientIP);
-        return studentMapper.toDto(studentEntity);
+
+        StudentDto dto = studentMapper.toDto(studentEntity);
+        dto.setStudyField( fieldStudyMapper.toDto(studentEntity.getStudyField()));
+        return dto;
+
     }
 
     /**
@@ -104,22 +106,19 @@ public class StudentService implements Student {
     public StudentDto getStudentById(Integer id, PhotoDTO photo, HttpServletRequest httpServletRequest) {
         String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
         String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
-
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
         Optional<StudentEntity> byId = studentRepository.findById(id);
         if (byId.isEmpty()) {
             LOG.warn("Student not Found   \t\t {}", id);
-            LOG.info("Client host : \t\t {}", ClientInfo);
-            LOG.info("Client IP :  \t\t {}", ClientIP);
             throw new NotFoundException("User Not Found ");
         }
 
         StudentEntity studentEntity = byId.get();
         StudentDto studentDto = studentMapper.toDto(studentEntity);
         FieldStudiesDto dto = fieldStudyMapper.toDto(studentEntity.getStudyField());
-        studentDto.setStudyFieldId(dto);
+        studentDto.setStudyField(dto);
         LOG.info("Get one Student by Id   \t\t {}", studentDto);
-        LOG.info("Client host : \t\t {}", ClientInfo);
-        LOG.info("Client IP :  \t\t {}", ClientIP);
         documents.getPdf(studentDto, photo);
         return studentDto;
     }
@@ -133,17 +132,15 @@ public class StudentService implements Student {
     public void delete(Integer id, HttpServletRequest httpServletRequest) {
         String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
         String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
         Optional<StudentEntity> byId = studentRepository.findById(id);
         if (byId.isEmpty()) {
             LOG.warn("Not Delete student : Id not Found   \t\t {}", id);
-            LOG.info("Client host : \t\t {}", ClientInfo);
-            LOG.info("Client IP :  \t\t {}", ClientIP);
             throw new NotFoundException("Student Not Found");
         }
         studentRepository.delete(byId.get());
         LOG.info("Delete Student by Id :   \t\t {}", id);
-        LOG.info("Client host : \t\t {}", ClientInfo);
-        LOG.info("Client IP :  \t\t {}", ClientIP);
         throw new OkResponse("Deleted");
 
     }
@@ -155,15 +152,15 @@ public class StudentService implements Student {
      * @param id                id of student which must be change
      */
     @Override
-    public StudentDto updateStudent(Integer id, StudentRequestDTO studentRequestDTO, HttpServletRequest httpServletRequest) {
+    public StudentDto updateStudent(Integer id, StudentRequestDTO studentRequestDTO,
+                                    HttpServletRequest httpServletRequest) {
         String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
         String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
-
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
         Optional<StudentEntity> byId = studentRepository.findById(id);
         if (byId.isEmpty()) {
             LOG.warn("Not Update student : Id not Found   \t\t {}", id);
-            LOG.info("Client host : \t\t {}", ClientInfo);
-            LOG.info("Client IP :  \t\t {}", ClientIP);
             throw new NotFoundException("That student is not Found");
         }
 
@@ -171,8 +168,6 @@ public class StudentService implements Student {
 
         studentRepository.save(studentMapper.updateFromDto(studentRequestDTO, studentEntity));
         LOG.info("Update Student by Id :   \t\t {}", studentEntity);
-        LOG.info("Client host : \t\t {}", ClientInfo);
-        LOG.info("Client IP :  \t\t {}", ClientIP);
 
         return studentMapper.toDto(studentEntity);
 

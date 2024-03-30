@@ -1,10 +1,10 @@
 package com.company.service;
 
-import com.company.dto.PhotoDTO;
-import com.company.dto.fieldstudy.FieldStudiesDto;
-import com.company.dto.student.StudentDto;
-import com.company.entity.StudentEntity;
-import com.company.interfaces.Documents;
+import com.company.aggregation.dto.PhotoDTO;
+import com.company.aggregation.dto.fieldstudy.FieldStudiesDto;
+import com.company.aggregation.dto.student.StudentDto;
+import com.company.aggregation.entity.StudentEntity;
+import com.company.service.interfaces.Documents;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -68,7 +68,7 @@ public class DocumentService implements Documents {
                     LocalDate createdDate = studenDto.getCreatedTime().toLocalDate();
                     LocalDate studyStartDate = studenDto.getStudyStartDate();
                     LocalDate studyEndDate = studenDto.getStudyEndDate();
-                    FieldStudiesDto studyField = studenDto.getStudyFieldId();
+                    FieldStudiesDto studyField = studenDto.getStudyField();
                     row.createCell(5).setCellValue(String.valueOf(birthdate));
                     row.createCell(6).setCellValue(String.valueOf(createdDate));
                     row.createCell(7).setCellValue(String.valueOf(studyStartDate));
@@ -109,15 +109,18 @@ public class DocumentService implements Documents {
             image.setHeight(130);
             image.setWidth(110);
 
-            document.add(new Paragraph(dto.getFirstName() + " " + dto.getSurName() + " " + dto.getMiddleName()).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(16).setWidth(300).setMarginRight(40).setUnderline());
+            document.add(new Paragraph(dto.getFirstName() + " " + dto.getSurName() + " " + dto.getMiddleName())
+                    .setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(16).setWidth(300)
+                    .setMarginRight(40).setUnderline());
             document.add(image);
 
             String age = String.valueOf(LocalDate.now().getYear() - dto.getBirthDate().getYear());
             LocalDate birthday = dto.getBirthDate();
             document.add(new Paragraph(dto.getGender() + ", " + age + " years old ." + " Date of birth : "
                     + birthday.getMonth() + " " + birthday.getDayOfMonth() + " , " + birthday.getYear()
-            ).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(10).setWidth(300).setMarginRight(40).setMarginTop(-110));
-            FieldStudiesDto studyField = dto.getStudyFieldId();
+            ).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(10).setWidth(300).setMarginRight(40)
+                    .setMarginTop(-110));
+            FieldStudiesDto studyField = dto.getStudyField();
                     document.add(new Paragraph("Study at  :  " + studyField.getUniversity().getName() + " University  Field  of  "
                     + studyField.getName()
             ).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(12).setWidth(300).setMarginRight(40));
@@ -125,14 +128,23 @@ public class DocumentService implements Documents {
             LocalDate startDate = dto.getStudyStartDate();
 
             document.add(new Paragraph("Study Started at  " + startDate.getMonth()
-                    + " " + startDate.getDayOfMonth() + " , " + startDate.getYear()).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(12).setWidth(300).setMarginRight(40));
+                    + " " + startDate.getDayOfMonth() + " , " + startDate.getYear())
+                    .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                    .setFontSize(12)
+                    .setWidth(300)
+                    .setMarginRight(40));
 
             LocalDate endDate = dto.getStudyEndDate();
 
             document.add(new Paragraph("Study Ended at  " + endDate.getMonth()
-                    + " " + endDate.getDayOfMonth() + " , " + endDate.getYear()).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(12).setWidth(300).setMarginRight(40));
+                    + " " + endDate.getDayOfMonth() + " , " + endDate.getYear())
+                    .setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(12)
+                    .setWidth(300).setMarginRight(40));
 
-            document.add(new Paragraph("Description\n  " + dto.getDescription()).setHorizontalAlignment(HorizontalAlignment.CENTER).setFontSize(12).setWidth(300).setMarginRight(40));
+            document.add(new Paragraph("Description\n  " + dto.getDescription())
+                    .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                    .setFontSize(12).setWidth(300)
+                    .setMarginRight(40));
 
 
         } catch (FileNotFoundException e) {

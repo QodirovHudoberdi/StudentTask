@@ -1,6 +1,6 @@
 package com.company.repository;
 
-import com.company.entity.UniversityEntity;
+import com.company.aggregation.entity.UniversityEntity;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

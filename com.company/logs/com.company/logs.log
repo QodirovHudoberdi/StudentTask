@@ -427,3 +427,269 @@ java.lang.NullPointerException: Cannot invoke "com.company.dto.fieldstudy.FieldS
 2024-03-30 14:38:16 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-03-30 14:38:16 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-03-30 14:38:16 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-03-30 15:32:44 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+2024-03-30 15:32:44 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 12604 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-03-30 15:32:44 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-03-30 15:32:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-30 15:32:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 108 ms. Found 3 JPA repository interfaces.
+2024-03-30 15:32:47 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-03-30 15:32:47 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2024-03-30 15:32:47 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-03-30 15:32:47 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-03-30 15:32:48 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-03-30 15:32:48 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3065 ms
+2024-03-30 15:32:48 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-30 15:32:48 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-03-30 15:32:48 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-30 15:32:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-03-30 15:32:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-03-30 15:32:49 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-03-30 15:32:51 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-30 15:32:51 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 15:32:51 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-30 15:32:52 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2024-03-30 15:32:52 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-03-30 15:32:52 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.688 seconds (JVM running for 10.723)
+2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Get one Student by Id   		 StudentDto(id=2, firstName=Sobir, surName=Sobirov, middleName=rahimovich, description=Matematika o'qituvchisi, gender=MALE, studyFieldId=FieldStudiesDto(id=4, name=Koreya Iqtisodiyoti, university=com.company.dto.UniversityDTO@41669075), studyStartDate=2022-02-01, studyEndDate=2023-02-01, birthDate=2001-06-01, createdTime=2024-03-28T09:55:32.454642)
+2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:07:17 [http-nio-8082-exec-3] WARN  com.company.service.StudentService - Not study Field : Id not Found   		 16
+2024-03-30 16:07:17 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:07:17 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:07:52 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=Axrorbek, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=4, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T16:07:52.615673800)
+2024-03-30 16:07:52 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:07:52 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:10:31 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:10:31 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-03-30 16:10:31 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-03-30 16:10:53 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+2024-03-30 16:10:53 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 8956 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-03-30 16:10:53 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-03-30 16:10:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-30 16:10:55 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 118 ms. Found 3 JPA repository interfaces.
+2024-03-30 16:10:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-03-30 16:10:56 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:10:56 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-03-30 16:10:56 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-03-30 16:10:56 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-03-30 16:10:56 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2980 ms
+2024-03-30 16:10:56 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-30 16:10:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-03-30 16:10:57 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-30 16:10:57 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-03-30 16:10:57 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-03-30 16:10:57 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-03-30 16:10:59 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-30 16:10:59 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:11:00 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-30 16:11:00 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:11:00 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-03-30 16:11:00 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.504 seconds (JVM running for 10.697)
+2024-03-30 16:11:29 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-30 16:11:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-03-30 16:11:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-03-30 16:11:30 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=String, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=4, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T16:11:30.043102700)
+2024-03-30 16:11:30 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:11:30 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:12:09 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:12:09 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-03-30 16:12:09 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-03-30 16:12:16 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+2024-03-30 16:12:16 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 4456 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-03-30 16:12:16 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-03-30 16:12:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-30 16:12:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 149 ms. Found 3 JPA repository interfaces.
+2024-03-30 16:12:19 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-03-30 16:12:19 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:12:19 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-03-30 16:12:19 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-03-30 16:12:19 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-03-30 16:12:19 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3329 ms
+2024-03-30 16:12:19 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-30 16:12:19 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-03-30 16:12:20 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-30 16:12:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-03-30 16:12:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-03-30 16:12:20 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-03-30 16:12:22 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-30 16:12:22 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:12:23 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-30 16:12:23 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:12:23 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-03-30 16:12:23 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.936 seconds (JVM running for 10.92)
+2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=hfuhghh, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=4, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T16:12:37.515090700)
+2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:15:36 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:15:36 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-03-30 16:15:36 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-03-30 16:15:47 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+2024-03-30 16:15:47 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 13624 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-03-30 16:15:47 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-03-30 16:15:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-30 16:15:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 151 ms. Found 3 JPA repository interfaces.
+2024-03-30 16:15:50 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-03-30 16:15:51 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:15:51 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-03-30 16:15:51 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-03-30 16:15:51 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-03-30 16:15:51 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3842 ms
+2024-03-30 16:15:51 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-30 16:15:51 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-03-30 16:15:52 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-30 16:15:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-03-30 16:15:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-03-30 16:15:53 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-03-30 16:15:54 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-30 16:15:54 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:15:55 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-30 16:15:56 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:15:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-03-30 16:15:56 [main] INFO  com.company.TaskApplication - Started TaskApplication in 10.13 seconds (JVM running for 12.056)
+2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=acsecas, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=4, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T16:16:04.325943800)
+2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:16:37 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Get one Student by Id   		 StudentDto(id=2, firstName=Sobir, surName=Sobirov, middleName=rahimovich, description=Matematika o'qituvchisi, gender=MALE, studyField=FieldStudiesDto(id=4, name=Koreya Iqtisodiyoti, university=com.company.dto.UniversityDTO@53194df2), studyStartDate=2022-02-01, studyEndDate=2023-02-01, birthDate=2001-06-01, createdTime=2024-03-28T09:55:32.454642)
+2024-03-30 16:16:37 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:16:37 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:16:48 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Get Students List   		 Page 1 of 4 containing com.company.entity.StudentEntity instances
+2024-03-30 16:16:48 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:16:48 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:17:08 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Update Student by Id :   		 com.company.entity.StudentEntity@492eb0a5
+2024-03-30 16:17:08 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:17:08 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:17:42 [http-nio-8082-exec-6] INFO  com.company.service.StudentService - Delete Student by Id :   		 30
+2024-03-30 16:17:42 [http-nio-8082-exec-6] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:17:42 [http-nio-8082-exec-6] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:18:19 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Get List of Universities   		 3
+2024-03-30 16:18:19 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:18:19 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:18:38 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - create University   		 com.company.dto.UniversityDTO@227a1e72
+2024-03-30 16:18:38 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:18:38 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:19:01 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - create studyField   		 {"name":"yfkygtkjhgli","UniversityId":11}
+2024-03-30 16:19:01 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:19:01 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:19:08 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Get studyField  		 3
+2024-03-30 16:19:08 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:19:08 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:30:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:30:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-03-30 16:30:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-03-30 16:30:29 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+2024-03-30 16:30:29 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 15504 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-03-30 16:30:29 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-03-30 16:30:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-30 16:30:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 108 ms. Found 3 JPA repository interfaces.
+2024-03-30 16:30:31 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-03-30 16:30:31 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:30:31 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-03-30 16:30:31 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-03-30 16:30:32 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-03-30 16:30:32 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2589 ms
+2024-03-30 16:30:32 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-30 16:30:32 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-03-30 16:30:32 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-30 16:30:32 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-03-30 16:30:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-03-30 16:30:33 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-03-30 16:30:34 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-30 16:30:34 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:30:35 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-30 16:30:35 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:30:35 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-03-30 16:30:35 [main] INFO  com.company.TaskApplication - Started TaskApplication in 7.477 seconds (JVM running for 9.986)
+2024-03-30 16:31:08 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:31:08 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-03-30 16:31:08 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-03-30 16:31:18 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+2024-03-30 16:31:18 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 8072 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-03-30 16:31:18 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-03-30 16:31:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-30 16:31:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 116 ms. Found 3 JPA repository interfaces.
+2024-03-30 16:31:21 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-03-30 16:31:21 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:31:21 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-03-30 16:31:21 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-03-30 16:31:21 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-03-30 16:31:21 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2918 ms
+2024-03-30 16:31:22 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-30 16:31:22 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-03-30 16:31:22 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-30 16:31:22 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-03-30 16:31:23 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-03-30 16:31:23 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-03-30 16:31:24 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-30 16:31:24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:31:25 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-30 16:31:26 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:31:26 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-03-30 16:31:26 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.345 seconds (JVM running for 10.151)
+2024-03-30 16:31:26 [main] INFO  c.company.utils.StartInitialization - --------- Start University-service :>> 2024-03-30 16:31:26 --------
+2024-03-30 16:39:52 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-30 16:39:52 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-03-30 16:39:52 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-03-30 16:39:53 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - create studyField   		 {"name":"A.X","UniversityId":11}
+2024-03-30 16:39:53 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:39:53 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:39:57 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - create studyField   		 {"name":"A.X","UniversityId":11}
+2024-03-30 16:39:57 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:39:57 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:40:05 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Update Student by Id :   		 com.company.aggregation.entity.StudentEntity@75d374f4
+2024-03-30 16:40:05 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:40:05 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:40:07 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Update Student by Id :   		 com.company.aggregation.entity.StudentEntity@35149583
+2024-03-30 16:40:07 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:40:07 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:42:12 [http-nio-8082-exec-9] WARN  com.company.service.StudentService -   It is Old Field Name of Study 		 FieldStudiesDto(id=null, name=A.X, university=null)
+2024-03-30 16:42:12 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:42:12 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:42:22 [http-nio-8082-exec-10] WARN  com.company.service.StudentService -   It is Old Field Name of Study 		 FieldStudiesDto(id=null, name=A.X, university=null)
+2024-03-30 16:42:22 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:42:22 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:42:58 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:42:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-03-30 16:42:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-03-30 16:43:14 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+2024-03-30 16:43:14 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 2588 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-03-30 16:43:14 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-03-30 16:43:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-30 16:43:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110 ms. Found 3 JPA repository interfaces.
+2024-03-30 16:43:16 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-03-30 16:43:16 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:43:16 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-03-30 16:43:16 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-03-30 16:43:16 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-03-30 16:43:16 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2651 ms
+2024-03-30 16:43:17 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-30 16:43:17 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-03-30 16:43:17 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-30 16:43:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-03-30 16:43:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-03-30 16:43:18 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-03-30 16:43:19 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-30 16:43:19 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 16:43:20 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-30 16:43:20 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2024-03-30 16:43:20 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-03-30 16:43:20 [main] INFO  com.company.TaskApplication - Started TaskApplication in 7.533 seconds (JVM running for 9.316)
+2024-03-30 16:43:20 [main] INFO  c.company.utils.StartInitialization - --------- Start University-service :>> 2024-03-30 16:43:20 --------
+2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 localhost
+2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
+2024-03-30 16:43:29 [http-nio-8082-exec-2] WARN  com.company.service.StudentService -   It is Old Field Name of Study 		 FieldStudiesDto(id=null, name=A.X, university=null)
+2024-03-30 16:43:29 [http-nio-8082-exec-2] ERROR c.company.exception.ControllerAdvice - Wrong Exception : It is Old Field Name of Study
+2024-03-30 17:35:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-30 17:35:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-03-30 17:35:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

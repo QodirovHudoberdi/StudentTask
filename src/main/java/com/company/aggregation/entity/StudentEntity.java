@@ -1,6 +1,6 @@
-package com.company.entity;
+package com.company.aggregation.entity;
 
-import com.company.enums.StudentGender;
+import com.company.aggregation.enums.StudentGender;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;

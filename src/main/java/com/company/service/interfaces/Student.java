@@ -1,8 +1,8 @@
-package com.company.interfaces;
+package com.company.service.interfaces;
 
-import com.company.dto.PhotoDTO;
-import com.company.dto.student.StudentRequestDTO;
-import com.company.dto.student.StudentDto;
+import com.company.aggregation.dto.PhotoDTO;
+import com.company.aggregation.dto.student.StudentRequestDTO;
+import com.company.aggregation.dto.student.StudentDto;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

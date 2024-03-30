@@ -1,13 +1,13 @@
 package com.company.service;
 
-import com.company.NetworkDataService;
-import com.company.dto.UniversityDTO;
-import com.company.dto.fieldstudy.FieldStudiesDto;
-import com.company.dto.fieldstudy.FieldStudiesRequestDTO;
-import com.company.entity.FieldStudiesEntity;
-import com.company.entity.UniversityEntity;
+import com.company.aggregation.config.NetworkDataService;
+import com.company.aggregation.dto.UniversityDTO;
+import com.company.aggregation.dto.fieldstudy.FieldStudiesDto;
+import com.company.aggregation.dto.fieldstudy.FieldStudiesRequestDTO;
+import com.company.aggregation.entity.FieldStudiesEntity;
+import com.company.aggregation.entity.UniversityEntity;
 import com.company.exception.WrongException;
-import com.company.interfaces.StudyField;
+import com.company.service.interfaces.StudyField;
 import com.company.mapper.FieldStudyMapper;
 import com.company.mapper.UniversityMapper;
 import com.company.repository.StudyFieldRepository;
@@ -51,19 +51,17 @@ public class StudyFieldService implements StudyField {
     public FieldStudiesDto create(FieldStudiesRequestDTO fieldStudiesRequestDto, HttpServletRequest httpServletRequest) {
         String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
         String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
-
-        Optional<UniversityEntity> universityEntity = universityRepository.findById(fieldStudiesRequestDto.getUniversityId());
+        LOG.info("Client host : \t\t {}", ClientInfo);
+        LOG.info("Client IP :  \t\t {}", ClientIP);
+        Optional<UniversityEntity> universityEntity = universityRepository.findById(fieldStudiesRequestDto
+                .getUniversityId());
         if (universityEntity.isEmpty()) {
             LOG.info("create studyField   \t\t {}", (fieldStudiesRequestDto));
-            LOG.info("Client host : \t\t {}", ClientInfo);
-            LOG.info("Client IP :  \t\t {}", ClientIP);
             throw new WrongException("University Not Found");
         }
 
         UniversityDTO universityDTO = universityMapper.toDto(universityEntity.get());
         LOG.info("create studyField   \t\t {}", gson.toJson(fieldStudiesRequestDto));
-        LOG.info("Client host : \t\t {}", ClientInfo);
-        LOG.info("Client IP :  \t\t {}", ClientIP);
         FieldStudiesEntity entity = fieldStudyMapper.toEntity(fieldStudiesRequestDto);
         studyFieldRepository.save(entity);
         FieldStudiesDto fieldStudiesDto = fieldStudyMapper.toDto(entity);
@@ -79,9 +77,9 @@ public class StudyFieldService implements StudyField {
     public List<FieldStudiesDto> getList(Integer pageNo, Integer pageSize, HttpServletRequest httpServletRequest) {
         String ClientIP = networkDataService.getClientIPv4Address(httpServletRequest);
         String ClientInfo = networkDataService.getRemoteUserInfo(httpServletRequest);
-        LOG.info("Get studyField  \t\t {}", pageSize);
         LOG.info("Client host : \t\t {}", ClientInfo);
         LOG.info("Client IP :  \t\t {}", ClientIP);
+        LOG.info("Get studyField  \t\t {}", pageSize);
         Pageable page = PageRequest.of(pageNo, pageSize, Sort.by("id"));
         Page<FieldStudiesEntity> page1 = studyFieldRepository.findAll(page);
         if (page1.hasContent()) {

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.aggregation.config;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.SocketException;

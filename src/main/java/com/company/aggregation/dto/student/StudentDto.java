@@ -1,7 +1,7 @@
-package com.company.dto.student;
+package com.company.aggregation.dto.student;
 
-import com.company.dto.fieldstudy.FieldStudiesDto;
-import com.company.enums.StudentGender;
+import com.company.aggregation.dto.fieldstudy.FieldStudiesDto;
+import com.company.aggregation.enums.StudentGender;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -15,7 +15,7 @@ public class StudentDto {
     private String middleName;
     private String description;
     private StudentGender gender;
-    private FieldStudiesDto studyFieldId;
+    private FieldStudiesDto studyField;
     private LocalDate studyStartDate;
     private LocalDate studyEndDate;
     private LocalDate birthDate;

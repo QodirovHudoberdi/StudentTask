@@ -1,6 +1,6 @@
-package com.company.dto.fieldstudy;
+package com.company.aggregation.dto.fieldstudy;
 
-import com.company.dto.UniversityDTO;
+import com.company.aggregation.dto.UniversityDTO;
 import lombok.Data;
 
 import javax.validation.constraints.Size;

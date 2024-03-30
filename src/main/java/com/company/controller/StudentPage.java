@@ -1,9 +1,9 @@
 package com.company.controller;
 
-import com.company.dto.PhotoDTO;
-import com.company.dto.student.StudentRequestDTO;
-import com.company.dto.student.StudentDto;
-import com.company.interfaces.Student;
+import com.company.aggregation.dto.PhotoDTO;
+import com.company.aggregation.dto.student.StudentRequestDTO;
+import com.company.aggregation.dto.student.StudentDto;
+import com.company.service.interfaces.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
