@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Student Service
 
 ### Automation of The process of studying students
@@ -30,3 +31,6 @@ public class StudentsProjectApplication {
 | 3  |   [Student Service](https://github.com/QodirovHudoberdi/StudentTask/blob/master/src/main/java/com/company/controller/StudentPage.java)         |   ✅    |
 | 4  | [File Storage Service](https://github.com/QodirovHudoberdi/StudentTask/blob/master/src/main/java/com/company/service/DocumentService.java)  |   ✅    |
 | 5  |      [Export Services](https://github.com/QodirovHudoberdi/StudentTask/blob/master/src/main/java/com/company/service/PhotoService.java)       |   ✅    |
+=======
+
+>>>>>>> origin/master
