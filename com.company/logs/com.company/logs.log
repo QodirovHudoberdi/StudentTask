@@ -1,50 +1,155 @@
-2024-03-30 13:02:59 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 22164 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 13:02:59 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 13:02:59 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 13:03:00 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 13:03:00 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135 ms. Found 3 JPA repository interfaces.
-2024-03-30 13:03:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 13:03:02 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 13:03:02 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 13:03:02 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 13:03:02 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 13:03:02 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3247 ms
-2024-03-30 13:03:02 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 13:03:03 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 13:03:03 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 13:03:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 13:03:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 13:03:04 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 13:03:05 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 13:03:05 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 13:03:06 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 13:03:06 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 13:03:07 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 13:03:07 [main] INFO  com.company.TaskApplication - Started TaskApplication in 9.066 seconds (JVM running for 12.702)
-2024-03-30 13:56:50 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m45s539ms596µs300ns).
-2024-03-30 13:56:57 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 13:56:57 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 13:56:57 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2024-03-30 13:56:58 [http-nio-8082-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.google.gson.JsonIOException: Failed making field 'java.time.LocalDate#year' accessible; either increase its visibility or write a custom TypeAdapter for its declaring type.] with root cause
-java.lang.reflect.InaccessibleObjectException: Unable to make field private final int java.time.LocalDate.year accessible: module java.base does not "opens java.time" to unnamed module @72d6b3ba
-	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
-	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
-	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:178)
-	at java.base/java.lang.reflect.Field.setAccessible(Field.java:172)
-	at com.google.gson.internal.reflect.ReflectionHelper.makeAccessible(ReflectionHelper.java:35)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.getBoundFields(ReflectiveTypeAdapterFactory.java:286)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.create(ReflectiveTypeAdapterFactory.java:130)
-	at com.google.gson.Gson.getAdapter(Gson.java:556)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.createBoundField(ReflectiveTypeAdapterFactory.java:160)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.getBoundFields(ReflectiveTypeAdapterFactory.java:294)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.create(ReflectiveTypeAdapterFactory.java:130)
-	at com.google.gson.Gson.getAdapter(Gson.java:556)
-	at com.google.gson.Gson.toJson(Gson.java:834)
-	at com.google.gson.Gson.toJson(Gson.java:812)
-	at com.google.gson.Gson.toJson(Gson.java:759)
-	at com.google.gson.Gson.toJson(Gson.java:736)
-	at com.company.service.StudentService.create(StudentService.java:93)
-	at com.company.controller.StudentPage.create(StudentPage.java:22)
+2024-04-01 15:09:40 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 16540 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-04-01 15:09:40 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-04-01 15:09:41 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-01 15:09:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 99 ms. Found 3 JPA repository interfaces.
+2024-04-01 15:09:43 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-04-01 15:09:43 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-01 15:09:43 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-04-01 15:09:43 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-01 15:09:43 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2982 ms
+2024-04-01 15:09:43 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-01 15:09:43 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-04-01 15:09:44 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-01 15:09:44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-04-01 15:09:44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-04-01 15:09:44 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-04-01 15:09:46 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-01 15:09:46 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-01 15:09:47 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-01 15:09:47 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-04-01 15:09:47 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 14 mappings in 'requestMappingHandlerMapping'
+2024-04-01 15:09:47 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-04-01 15:09:47 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-04-01 15:09:48 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-04-01 15:09:48 [main] INFO  com.company.TaskApplication - Started TaskApplication in 9.178 seconds (JVM running for 11.335)
+2024-04-01 15:09:48 [main] INFO  c.company.utils.StartInitialization - --------- Start University-service :>> 2024-04-01 15:09:48 --------
+2024-04-01 15:10:43 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-01 15:10:43 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-04-01 15:10:43 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-04-01 17:43:14 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 20224 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-04-01 17:43:14 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-04-01 17:43:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-01 17:43:16 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 124 ms. Found 3 JPA repository interfaces.
+2024-04-01 17:43:17 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-04-01 17:43:17 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-01 17:43:17 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-04-01 17:43:17 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-01 17:43:17 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2996 ms
+2024-04-01 17:43:17 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-01 17:43:17 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-04-01 17:43:18 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-01 17:43:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-04-01 17:43:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-04-01 17:43:18 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-04-01 17:43:21 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-01 17:43:21 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-01 17:43:22 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-01 17:43:22 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-04-01 17:43:22 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 14 mappings in 'requestMappingHandlerMapping'
+2024-04-01 17:43:22 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-04-01 17:43:22 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-04-01 17:43:22 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-04-01 17:43:22 [main] INFO  com.company.TaskApplication - Started TaskApplication in 9.452 seconds (JVM running for 16.074)
+2024-04-01 17:43:22 [main] INFO  c.company.utils.StartInitialization - --------- Start University-service :>> 2024-04-01 17:43:22 --------
+2024-04-01 17:50:52 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-01 17:50:52 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-04-01 17:50:52 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-04-01 17:50:59 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 10416 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
+2024-04-01 17:50:59 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
+2024-04-01 17:51:00 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-01 17:51:00 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 133 ms. Found 3 JPA repository interfaces.
+2024-04-01 17:51:01 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2024-04-01 17:51:01 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-04-01 17:51:01 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2024-04-01 17:51:01 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-04-01 17:51:01 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2754 ms
+2024-04-01 17:51:02 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-01 17:51:02 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-04-01 17:51:02 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-01 17:51:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-04-01 17:51:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-04-01 17:51:03 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-04-01 17:51:04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-01 17:51:04 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-01 17:51:05 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-01 17:51:05 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-04-01 17:51:05 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 14 mappings in 'requestMappingHandlerMapping'
+2024-04-01 17:51:05 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-04-01 17:51:05 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-04-01 17:51:05 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2024-04-01 17:51:05 [main] INFO  com.company.TaskApplication - Started TaskApplication in 7.949 seconds (JVM running for 9.981)
+2024-04-01 17:51:05 [main] INFO  c.company.utils.StartInitialization - --------- Start University-service :>> 2024-04-01 17:51:05 --------
+2024-04-01 17:51:45 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-01 17:51:45 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@fdf029a
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@62732be7
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-04-01 17:51:45 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 14 ms
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - PUT "/edit/university/name/2", parameters={}
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.company.controller.EditPage#update(Integer, UniversityDTO, HttpServletRequest)
+2024-04-01 17:51:45 [http-nio-8082-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.company.aggregation.dto.UniversityDTO@1463293e]
+2024-04-01 17:51:45 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 172.20.10.3
+2024-04-01 17:51:45 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 172.20.10.2
+2024-04-01 17:51:45 [http-nio-8082-exec-2] WARN  com.company.service.StudentService - Update University   		 com.company.aggregation.dto.UniversityDTO@1463293e
+2024-04-01 17:51:45 [http-nio-8082-exec-2] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 23502
+2024-04-01 17:51:45 [http-nio-8082-exec-2] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - ОШИБКА: значение NULL в столбце "name" отношения "university" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (2, null).
+2024-04-01 17:51:45 [http-nio-8082-exec-2] INFO  o.h.e.j.b.internal.AbstractBatchImpl - HHH000010: On release of batch it still contained JDBC statements
+2024-04-01 17:51:46 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Failed to complete request: org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2024-04-01 17:51:46 [http-nio-8082-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause
+org.postgresql.util.PSQLException: ОШИБКА: значение NULL в столбце "name" отношения "university" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (2, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:490)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:408)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:167)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:135)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:46)
+	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3571)
+	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3438)
+	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3852)
+	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:201)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604)
+	at org.hibernate.engine.spi.ActionQueue.lambda$executeActions$1(ActionQueue.java:478)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:475)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:344)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:40)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:107)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1407)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:489)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3290)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2425)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:449)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:183)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:40)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:281)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:562)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:743)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:174)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy108.save(Unknown Source)
+	at com.company.service.UpdateService.updateUniversityName(UpdateService.java:57)
+	at com.company.controller.EditPage.update(EditPage.java:20)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -58,8 +163,8 @@ java.lang.reflect.InaccessibleObjectException: Unable to make field private fina
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:920)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:684)
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
@@ -95,601 +200,11 @@ java.lang.reflect.InaccessibleObjectException: Unable to make field private fina
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:840)
-2024-03-30 13:58:43 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 13:58:43 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 13:58:43 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 13:58:59 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 13:58:59 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 22044 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 13:58:59 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 13:59:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 13:59:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 87 ms. Found 3 JPA repository interfaces.
-2024-03-30 13:59:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 13:59:02 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 13:59:02 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 13:59:02 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 13:59:02 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 13:59:02 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2609 ms
-2024-03-30 13:59:02 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 13:59:02 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 13:59:03 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 13:59:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 13:59:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 13:59:03 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 13:59:05 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 13:59:05 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 13:59:05 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 13:59:06 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 13:59:06 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 13:59:06 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.271 seconds (JVM running for 10.331)
-2024-03-30 13:59:10 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 13:59:10 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 13:59:10 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2024-03-30 13:59:11 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=Bod, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=1, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T13:59:11.058773500)
-2024-03-30 13:59:11 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 13:59:11 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:00:00 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=fdsd, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=1, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T14:00:00.148921100)
-2024-03-30 14:00:00 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:00:00 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:02:20 [http-nio-8082-exec-7] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is com.google.gson.JsonIOException: Failed making field 'java.time.LocalDate#year' accessible; either increase its visibility or write a custom TypeAdapter for its declaring type.] with root cause
-java.lang.reflect.InaccessibleObjectException: Unable to make field private final int java.time.LocalDate.year accessible: module java.base does not "opens java.time" to unnamed module @4f704591
-	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
-	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
-	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:178)
-	at java.base/java.lang.reflect.Field.setAccessible(Field.java:172)
-	at com.google.gson.internal.reflect.ReflectionHelper.makeAccessible(ReflectionHelper.java:35)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.getBoundFields(ReflectiveTypeAdapterFactory.java:286)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.create(ReflectiveTypeAdapterFactory.java:130)
-	at com.google.gson.Gson.getAdapter(Gson.java:556)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.createBoundField(ReflectiveTypeAdapterFactory.java:160)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.getBoundFields(ReflectiveTypeAdapterFactory.java:294)
-	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.create(ReflectiveTypeAdapterFactory.java:130)
-	at com.google.gson.Gson.getAdapter(Gson.java:556)
-	at com.google.gson.Gson.toJson(Gson.java:834)
-	at com.google.gson.Gson.toJson(Gson.java:812)
-	at com.google.gson.Gson.toJson(Gson.java:759)
-	at com.google.gson.Gson.toJson(Gson.java:736)
-	at com.company.service.StudentService.getStudentById(StudentService.java:120)
-	at com.company.controller.StudentPage.postImage(StudentPage.java:31)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-2024-03-30 14:03:04 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 14:03:04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 14:03:04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 14:03:18 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 14120 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 14:03:18 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 14:03:18 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 14:03:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 14:03:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 114 ms. Found 3 JPA repository interfaces.
-2024-03-30 14:03:20 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 14:03:20 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 14:03:20 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 14:03:20 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 14:03:21 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 14:03:21 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2609 ms
-2024-03-30 14:03:21 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 14:03:21 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 14:03:21 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 14:03:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 14:03:22 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 14:03:22 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 14:03:23 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 14:03:23 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 14:03:24 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 14:03:24 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 14:03:24 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 14:03:24 [main] INFO  com.company.TaskApplication - Started TaskApplication in 7.371 seconds (JVM running for 9.185)
-2024-03-30 14:03:45 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 14:03:45 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 14:03:45 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2024-03-30 14:03:45 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Get one Student by Id   		 StudentDto(id=2, firstName=Sobir, surName=Sobirov, middleName=rahimovich, description=Matematika o'qituvchisi, gender=MALE, studyFieldId=null, studyStartDate=2022-02-01, studyEndDate=2023-02-01, birthDate=2001-06-01, createdTime=2024-03-28T09:55:32.454642)
-2024-03-30 14:03:45 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:03:45 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:03:45 [http-nio-8082-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.company.dto.fieldstudy.FieldStudiesDto.getUniversity()" because "studyField" is null] with root cause
-java.lang.NullPointerException: Cannot invoke "com.company.dto.fieldstudy.FieldStudiesDto.getUniversity()" because "studyField" is null
-	at com.company.service.DocumentService.getPdf(DocumentService.java:121)
-	at com.company.service.StudentService.getStudentById(StudentService.java:123)
-	at com.company.controller.StudentPage.postImage(StudentPage.java:31)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-2024-03-30 14:10:28 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 14:10:28 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 14:10:28 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 14:10:42 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 14:10:42 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 20664 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 14:10:42 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 14:10:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 14:10:43 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 3 JPA repository interfaces.
-2024-03-30 14:10:44 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 14:10:44 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 14:10:44 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 14:10:44 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 14:10:45 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 14:10:45 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2450 ms
-2024-03-30 14:10:45 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 14:10:45 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 14:10:45 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 14:10:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 14:10:46 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 14:10:46 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 14:10:47 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 14:10:47 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 14:10:48 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 14:10:48 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 14:10:48 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 14:10:48 [main] INFO  com.company.TaskApplication - Started TaskApplication in 7.168 seconds (JVM running for 9.005)
-2024-03-30 14:11:04 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 14:11:04 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 14:11:04 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2024-03-30 14:11:05 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Get one Student by Id   		 com.company.entity.StudentEntity@10ba4da5
-2024-03-30 14:11:05 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:11:05 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:11:05 [http-nio-8082-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.company.dto.fieldstudy.FieldStudiesDto.getUniversity()" because "studyField" is null] with root cause
-java.lang.NullPointerException: Cannot invoke "com.company.dto.fieldstudy.FieldStudiesDto.getUniversity()" because "studyField" is null
-	at com.company.service.DocumentService.getPdf(DocumentService.java:121)
-	at com.company.service.StudentService.getStudentById(StudentService.java:124)
-	at com.company.controller.StudentPage.postImage(StudentPage.java:31)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-2024-03-30 14:11:42 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 14:11:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 14:11:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 14:13:30 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 14:13:30 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 22000 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 14:13:30 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 14:13:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 14:13:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 105 ms. Found 3 JPA repository interfaces.
-2024-03-30 14:13:32 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 14:13:32 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 14:13:32 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 14:13:32 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 14:13:32 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 14:13:32 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2462 ms
-2024-03-30 14:13:33 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 14:13:33 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 14:13:33 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 14:13:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 14:13:34 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 14:13:34 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 14:13:35 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 14:13:35 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 14:13:36 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 14:13:36 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 14:13:36 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 14:13:36 [main] INFO  com.company.TaskApplication - Started TaskApplication in 7.259 seconds (JVM running for 9.08)
-2024-03-30 14:13:54 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 14:13:54 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 14:13:54 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
-2024-03-30 14:13:54 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Get one Student by Id   		 StudentDto(id=2, firstName=Sobir, surName=Sobirov, middleName=rahimovich, description=Matematika o'qituvchisi, gender=MALE, studyFieldId=FieldStudiesDto(id=4, name=Koreya Iqtisodiyoti, university=com.company.dto.UniversityDTO@3f3d0bea), studyStartDate=2022-02-01, studyEndDate=2023-02-01, birthDate=2001-06-01, createdTime=2024-03-28T09:55:32.454642)
-2024-03-30 14:13:54 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:13:54 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:14:04 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Get Students List   		 Page 1 of 4 containing com.company.entity.StudentEntity instances
-2024-03-30 14:14:04 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:14:04 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:14:23 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Update Student by Id :   		 com.company.entity.StudentEntity@224cd376
-2024-03-30 14:14:23 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:14:23 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:14:51 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Delete Student by Id :   		 22
-2024-03-30 14:14:51 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:14:51 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:15:02 [http-nio-8082-exec-6] INFO  Logger5929 - Get list of Universities 
-2024-03-30 14:15:13 [http-nio-8082-exec-7] INFO  Logger5929 - Get list of Universities 
-2024-03-30 14:15:50 [http-nio-8082-exec-8] INFO  Logger5929 - Create new University
-2024-03-30 14:16:02 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Get studyField  		 3
-2024-03-30 14:16:02 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:16:02 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:16:43 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - create studyField   		 {"name":"Ingliz Tili","UniversityId":10}
-2024-03-30 14:16:43 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 14:16:43 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 14:38:16 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 14:38:16 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 14:38:16 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 15:32:44 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 15:32:44 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 12604 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 15:32:44 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 15:32:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 15:32:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 108 ms. Found 3 JPA repository interfaces.
-2024-03-30 15:32:47 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 15:32:47 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 15:32:47 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 15:32:47 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 15:32:48 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 15:32:48 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3065 ms
-2024-03-30 15:32:48 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 15:32:48 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 15:32:48 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 15:32:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 15:32:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 15:32:49 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 15:32:51 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 15:32:51 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 15:32:51 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 15:32:52 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 15:32:52 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 15:32:52 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.688 seconds (JVM running for 10.723)
-2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Get one Student by Id   		 StudentDto(id=2, firstName=Sobir, surName=Sobirov, middleName=rahimovich, description=Matematika o'qituvchisi, gender=MALE, studyFieldId=FieldStudiesDto(id=4, name=Koreya Iqtisodiyoti, university=com.company.dto.UniversityDTO@41669075), studyStartDate=2022-02-01, studyEndDate=2023-02-01, birthDate=2001-06-01, createdTime=2024-03-28T09:55:32.454642)
-2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:06:50 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:07:17 [http-nio-8082-exec-3] WARN  com.company.service.StudentService - Not study Field : Id not Found   		 16
-2024-03-30 16:07:17 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:07:17 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:07:52 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=Axrorbek, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=4, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T16:07:52.615673800)
-2024-03-30 16:07:52 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:07:52 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:10:31 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:10:31 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 16:10:31 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 16:10:53 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 16:10:53 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 8956 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 16:10:53 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 16:10:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 16:10:55 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 118 ms. Found 3 JPA repository interfaces.
-2024-03-30 16:10:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 16:10:56 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:10:56 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 16:10:56 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 16:10:56 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 16:10:56 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2980 ms
-2024-03-30 16:10:56 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 16:10:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 16:10:57 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 16:10:57 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 16:10:57 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 16:10:57 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 16:10:59 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 16:10:59 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:11:00 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 16:11:00 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:11:00 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 16:11:00 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.504 seconds (JVM running for 10.697)
-2024-03-30 16:11:29 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 16:11:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 16:11:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2024-03-30 16:11:30 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=String, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=4, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T16:11:30.043102700)
-2024-03-30 16:11:30 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:11:30 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:12:09 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:12:09 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 16:12:09 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 16:12:16 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 16:12:16 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 4456 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 16:12:16 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 16:12:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 16:12:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 149 ms. Found 3 JPA repository interfaces.
-2024-03-30 16:12:19 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 16:12:19 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:12:19 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 16:12:19 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 16:12:19 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 16:12:19 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3329 ms
-2024-03-30 16:12:19 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 16:12:19 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 16:12:20 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 16:12:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 16:12:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 16:12:20 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 16:12:22 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 16:12:22 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:12:23 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 16:12:23 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:12:23 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 16:12:23 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.936 seconds (JVM running for 10.92)
-2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=hfuhghh, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=4, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T16:12:37.515090700)
-2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:12:37 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:15:36 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:15:36 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 16:15:36 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 16:15:47 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 16:15:47 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 13624 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 16:15:47 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 16:15:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 16:15:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 151 ms. Found 3 JPA repository interfaces.
-2024-03-30 16:15:50 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 16:15:51 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:15:51 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 16:15:51 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 16:15:51 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 16:15:51 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3842 ms
-2024-03-30 16:15:51 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 16:15:51 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 16:15:52 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 16:15:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 16:15:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 16:15:53 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 16:15:54 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 16:15:54 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:15:55 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 16:15:56 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:15:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 16:15:56 [main] INFO  com.company.TaskApplication - Started TaskApplication in 10.13 seconds (JVM running for 12.056)
-2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - create student  		 StudentRequestDTO(id=null, firstName=acsecas, surName=Sobirov, middleName=Rahimovich, description=Matematika, gender=MALE, studyFieldId=4, studyStartDate=2022-02-01, studyEndDate=2022-02-01, birthDate=2004-06-01, createdTime=2024-03-30T16:16:04.325943800)
-2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:16:04 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:16:37 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Get one Student by Id   		 StudentDto(id=2, firstName=Sobir, surName=Sobirov, middleName=rahimovich, description=Matematika o'qituvchisi, gender=MALE, studyField=FieldStudiesDto(id=4, name=Koreya Iqtisodiyoti, university=com.company.dto.UniversityDTO@53194df2), studyStartDate=2022-02-01, studyEndDate=2023-02-01, birthDate=2001-06-01, createdTime=2024-03-28T09:55:32.454642)
-2024-03-30 16:16:37 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:16:37 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:16:48 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Get Students List   		 Page 1 of 4 containing com.company.entity.StudentEntity instances
-2024-03-30 16:16:48 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:16:48 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:17:08 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Update Student by Id :   		 com.company.entity.StudentEntity@492eb0a5
-2024-03-30 16:17:08 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:17:08 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:17:42 [http-nio-8082-exec-6] INFO  com.company.service.StudentService - Delete Student by Id :   		 30
-2024-03-30 16:17:42 [http-nio-8082-exec-6] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:17:42 [http-nio-8082-exec-6] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:18:19 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Get List of Universities   		 3
-2024-03-30 16:18:19 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:18:19 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:18:38 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - create University   		 com.company.dto.UniversityDTO@227a1e72
-2024-03-30 16:18:38 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:18:38 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:19:01 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - create studyField   		 {"name":"yfkygtkjhgli","UniversityId":11}
-2024-03-30 16:19:01 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:19:01 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:19:08 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Get studyField  		 3
-2024-03-30 16:19:08 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:19:08 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:30:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:30:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 16:30:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 16:30:29 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 16:30:29 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 15504 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 16:30:29 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 16:30:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 16:30:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 108 ms. Found 3 JPA repository interfaces.
-2024-03-30 16:30:31 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 16:30:31 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:30:31 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 16:30:31 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 16:30:32 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 16:30:32 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2589 ms
-2024-03-30 16:30:32 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 16:30:32 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 16:30:32 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 16:30:32 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 16:30:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 16:30:33 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 16:30:34 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 16:30:34 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:30:35 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 16:30:35 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:30:35 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 16:30:35 [main] INFO  com.company.TaskApplication - Started TaskApplication in 7.477 seconds (JVM running for 9.986)
-2024-03-30 16:31:08 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:31:08 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 16:31:08 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 16:31:18 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 16:31:18 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 8072 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 16:31:18 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 16:31:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 16:31:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 116 ms. Found 3 JPA repository interfaces.
-2024-03-30 16:31:21 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 16:31:21 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:31:21 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 16:31:21 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 16:31:21 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 16:31:21 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2918 ms
-2024-03-30 16:31:22 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 16:31:22 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 16:31:22 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 16:31:22 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 16:31:23 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 16:31:23 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 16:31:24 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 16:31:24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:31:25 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 16:31:26 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:31:26 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 16:31:26 [main] INFO  com.company.TaskApplication - Started TaskApplication in 8.345 seconds (JVM running for 10.151)
-2024-03-30 16:31:26 [main] INFO  c.company.utils.StartInitialization - --------- Start University-service :>> 2024-03-30 16:31:26 --------
-2024-03-30 16:39:52 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 16:39:52 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 16:39:52 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2024-03-30 16:39:53 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - create studyField   		 {"name":"A.X","UniversityId":11}
-2024-03-30 16:39:53 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:39:53 [http-nio-8082-exec-1] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:39:57 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - create studyField   		 {"name":"A.X","UniversityId":11}
-2024-03-30 16:39:57 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:39:57 [http-nio-8082-exec-3] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:40:05 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Update Student by Id :   		 com.company.aggregation.entity.StudentEntity@75d374f4
-2024-03-30 16:40:05 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:40:05 [http-nio-8082-exec-4] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:40:07 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Update Student by Id :   		 com.company.aggregation.entity.StudentEntity@35149583
-2024-03-30 16:40:07 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:40:07 [http-nio-8082-exec-5] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:42:12 [http-nio-8082-exec-9] WARN  com.company.service.StudentService -   It is Old Field Name of Study 		 FieldStudiesDto(id=null, name=A.X, university=null)
-2024-03-30 16:42:12 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:42:12 [http-nio-8082-exec-9] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:42:22 [http-nio-8082-exec-10] WARN  com.company.service.StudentService -   It is Old Field Name of Study 		 FieldStudiesDto(id=null, name=A.X, university=null)
-2024-03-30 16:42:22 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:42:22 [http-nio-8082-exec-10] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:42:58 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:42:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 16:42:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-03-30 16:43:14 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2024-03-30 16:43:14 [main] INFO  com.company.TaskApplication - Starting TaskApplication using Java 17.0.9 on DESKTOP-U4GBMDE with PID 2588 (C:\Users\hudoberdi23\IdeaProjects\task\target\classes started by hudoberdi23 in C:\Users\hudoberdi23\IdeaProjects\task)
-2024-03-30 16:43:14 [main] INFO  com.company.TaskApplication - The following 1 profile is active: "prod"
-2024-03-30 16:43:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-30 16:43:15 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110 ms. Found 3 JPA repository interfaces.
-2024-03-30 16:43:16 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
-2024-03-30 16:43:16 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:43:16 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-03-30 16:43:16 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
-2024-03-30 16:43:16 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-03-30 16:43:16 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2651 ms
-2024-03-30 16:43:17 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-30 16:43:17 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2024-03-30 16:43:17 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-30 16:43:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-03-30 16:43:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-03-30 16:43:18 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-03-30 16:43:19 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-30 16:43:19 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 16:43:20 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-30 16:43:20 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
-2024-03-30 16:43:20 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
-2024-03-30 16:43:20 [main] INFO  com.company.TaskApplication - Started TaskApplication in 7.533 seconds (JVM running for 9.316)
-2024-03-30 16:43:20 [main] INFO  c.company.utils.StartInitialization - --------- Start University-service :>> 2024-03-30 16:43:20 --------
-2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client host : 		 localhost
-2024-03-30 16:43:29 [http-nio-8082-exec-2] INFO  com.company.service.StudentService - Client IP :  		 192.168.68.129
-2024-03-30 16:43:29 [http-nio-8082-exec-2] WARN  com.company.service.StudentService -   It is Old Field Name of Study 		 FieldStudiesDto(id=null, name=A.X, university=null)
-2024-03-30 16:43:29 [http-nio-8082-exec-2] ERROR c.company.exception.ControllerAdvice - Wrong Exception : It is Old Field Name of Study
-2024-03-30 17:35:01 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-03-30 17:35:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-03-30 17:35:01 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-04-01 17:51:46 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for PUT "/error", parameters={}
+2024-04-01 17:51:46 [http-nio-8082-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2024-04-01 17:51:46 [http-nio-8082-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2024-04-01 17:51:46 [http-nio-8082-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{timestamp=Mon Apr 01 17:51:46 UZT 2024, status=500, error=Internal Server Error, path=/edit/univers (truncated)...]
+2024-04-01 17:51:46 [http-nio-8082-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 500
+2024-04-01 17:54:05 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-01 17:54:05 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-04-01 17:54:05 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
