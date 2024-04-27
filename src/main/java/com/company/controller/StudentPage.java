@@ -43,7 +43,8 @@ public class StudentPage {
     }
 
     @GetMapping("/pageNo={no}/pageSize={size}")
-    public ResponseEntity<?> getList(@PathVariable("no") Integer no, @PathVariable("size") Integer size,HttpServletRequest httpServletRequest) {
+    public ResponseEntity<?> getList(@PathVariable("no") Integer no, @PathVariable("size") Integer size,
+                                     HttpServletRequest httpServletRequest) {
         return ResponseEntity.ok(student.getList(no, size,httpServletRequest));
     }
     @GetMapping("getExcel")
