@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+> HEAD
 # Student Service
 
 ### Automation of The process of studying students
